@@ -1,0 +1,8 @@
+app/scenario_app/app_api/src/app_pmu.c:250:13:priv_pmu_gpio_cb	0	static
+app/scenario_app/app_api/src/app_pmu.c:639:13:app_pmu_wakeup_gpio_cfg	24	static
+app/scenario_app/app_api/src/app_pmu.c:911:13:priv_pmu_enter_novidpre	112	static
+app/scenario_app/app_api/src/app_pmu.c:671:6:app_pmu_enter_sleep1_aos	120	static
+app/scenario_app/app_api/src/app_pmu.c:778:6:app_pmu_enter_sleep1_bootwithcap	112	static
+app/scenario_app/app_api/src/app_pmu.c:1009:6:app_pmu_enter_sleep1	24	static
+app/scenario_app/app_api/src/app_pmu.c:1014:6:app_pmu_enter_sleep2	24	static
+app/scenario_app/app_api/src/app_pmu.c:1019:6:app_pmu_enter_shutdown	80	static

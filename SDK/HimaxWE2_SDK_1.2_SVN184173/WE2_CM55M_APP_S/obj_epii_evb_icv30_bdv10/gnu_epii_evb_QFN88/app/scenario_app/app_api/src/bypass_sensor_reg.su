@@ -1,0 +1,1 @@
+app/scenario_app/app_api/src/bypass_sensor_reg.c:37:6:i2ccomm_cmd_process_sensor_reg_rw	32	static

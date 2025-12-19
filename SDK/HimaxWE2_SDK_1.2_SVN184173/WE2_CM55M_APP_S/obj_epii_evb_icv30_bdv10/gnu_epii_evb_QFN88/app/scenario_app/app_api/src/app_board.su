@@ -1,0 +1,4 @@
+app/scenario_app/app_api/src/app_board.c:26:6:priv_set_128_socket_board_pinmux	8	static
+app/scenario_app/app_api/src/app_board.c:59:6:priv_set_88_socket_board_pinmux	8	static
+app/scenario_app/app_api/src/app_board.c:186:6:priv_set_88_aiot_evb_pinmux	8	static
+app/scenario_app/app_api/src/app_board.c:13:6:app_board_pinmux_settings	0	static

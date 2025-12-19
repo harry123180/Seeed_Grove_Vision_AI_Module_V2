@@ -1,0 +1,38 @@
+======================================
+XMODEM 燒錄步驟 - 電源重啟法
+======================================
+
+問題原因：
+- 亂碼表示韌體已啟動 (921600 鮑率)
+- bootloader 只等待 100ms 就會啟動韌體
+- 需要在 bootloader 階段就接收到按鍵
+
+解決方法 - 電源重啟法：
+
+步驟 1: 關閉所有串口程式 (Tera Term, PuTTY 等)
+
+步驟 2: 執行指令
+   python xmodem_send_improved.py --port COM3 --file ..\we2_image_gen_local\output_case1_sec_wlcsp\output.img
+
+步驟 3: 拔掉 USB 線
+
+步驟 4: 插回 USB 線 (這會觸發完整重啟)
+
+原理：插入 USB = 裝置上電 = bootloader 先執行 = 持續發送的 '1' 可以捕捉到它
+
+======================================
+備用方法 - Tera Term 手動法
+======================================
+
+步驟 1: 開啟 Tera Term，連接 COM3，鮑率 115200
+
+步驟 2: 按住空白鍵不放
+
+步驟 3: 按住空白鍵的同時，按 RESET 按鈕
+
+步驟 4: 應該會看到 bootloader 選單
+
+步驟 5: 按 '1' 進入 xmodem 模式
+
+步驟 6: File -> Transfer -> XMODEM -> Send -> 選擇 output.img
+

@@ -1,0 +1,4 @@
+C:\Users\TSIC\OneDrive - 南臺科技大學\廠商資料\泓舉工作室\產引\產發\奇景WiseEye\HimaxWE2_SDK_1.2_SVN184173\we2_image_gen_local\output_case1_secboot_nodiv\inter_files\cm55m_s_application_p1_s1.img 0x10000000 0x3a015548 0x0010000 0
+C:\Users\TSIC\OneDrive - 南臺科技大學\廠商資料\泓舉工作室\產引\產發\奇景WiseEye\HimaxWE2_SDK_1.2_SVN184173\we2_image_gen_local\output_case1_secboot_nodiv\inter_files\cm55m_s_application_p1_s2.img 0x100007c0 0x3a015d08 0x0010000 0
+C:\Users\TSIC\OneDrive - 南臺科技大學\廠商資料\泓舉工作室\產引\產發\奇景WiseEye\HimaxWE2_SDK_1.2_SVN184173\we2_image_gen_local\output_case1_secboot_nodiv\inter_files\cm55m_s_application_p1_s3.img 0x30000000 0x3a0383ec 0x0010000 0
+C:\Users\TSIC\OneDrive - 南臺科技大學\廠商資料\泓舉工作室\產引\產發\奇景WiseEye\HimaxWE2_SDK_1.2_SVN184173\we2_image_gen_local\output_case1_secboot_nodiv\inter_files\cm55m_s_application_p1_s4.img 0x10022ea4 0x3a03e4c4 0x0010000 0

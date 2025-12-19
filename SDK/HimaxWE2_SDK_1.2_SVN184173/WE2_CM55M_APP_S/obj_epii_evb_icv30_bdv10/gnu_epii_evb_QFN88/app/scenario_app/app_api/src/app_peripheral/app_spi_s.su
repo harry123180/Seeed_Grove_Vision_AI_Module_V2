@@ -1,0 +1,11 @@
+app/scenario_app/app_api/src/app_peripheral/app_spi_s.c:19:13:app_spi_s_callback_fun_rx	0	static
+app/scenario_app/app_api/src/app_peripheral/app_spi_s.c:36:13:app_spi_s_callback_fun_err	0	static
+app/scenario_app/app_api/src/app_peripheral/app_spi_s.c:58:13:app_spi_s_cb_fun_rx	8	static
+app/scenario_app/app_api/src/app_peripheral/app_spi_s.c:26:13:app_spi_s_callback_fun_tx	8	static
+app/scenario_app/app_api/src/app_peripheral/app_spi_s.c:48:13:app_spi_s_cb_fun_tx	8	static
+app/scenario_app/app_api/src/app_peripheral/app_spi_s.c:42:13:app_spi_s_callback_fun_xfer	0	static
+app/scenario_app/app_api/src/app_peripheral/app_spi_s.c:65:8:app_spi_s_open	48	static
+app/scenario_app/app_api/src/app_peripheral/app_spi_s.c:97:8:app_spi_s_close	8	static
+app/scenario_app/app_api/src/app_peripheral/app_spi_s.c:103:8:app_spi_s_write	48	static
+app/scenario_app/app_api/src/app_peripheral/app_spi_s.c:184:8:app_spi_s_preset_write_handshake	8	static
+app/scenario_app/app_api/src/app_peripheral/app_spi_s.c:200:8:app_spi_s_read	24	static

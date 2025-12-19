@@ -1,0 +1,16 @@
+app/scenario_app/app_api/src/app_api.c:202:13:priv_gpio_cb	0	static
+app/scenario_app/app_api/src/app_api.c:46:9:app_spi_init	8	static
+app/scenario_app/app_api/src/app_api.c:87:9:app_spi_write	32	static
+app/scenario_app/app_api/src/app_api.c:156:8:app_gpio_set_mode	8	static
+app/scenario_app/app_api/src/app_api.c:174:8:app_gpio_set_value	8	static
+app/scenario_app/app_api/src/app_api.c:188:8:app_gpio_get_value	8	static
+app/scenario_app/app_api/src/app_api.c:206:6:app_gpio_intr_register	16	static
+app/scenario_app/app_api/src/app_api.c:222:6:app_gpio_intr_unregister	8	static
+app/scenario_app/app_api/src/app_api.c:231:6:app_led_init	8	static
+app/scenario_app/app_api/src/app_api.c:237:6:app_led_green	0	static
+app/scenario_app/app_api/src/app_api.c:245:6:app_led_blue	0	static
+app/scenario_app/app_api/src/app_api.c:255:10:app_timer_get_current_time_ms	16	static
+app/scenario_app/app_api/src/app_api.c:276:8:app_delay_ms	8	static
+app/scenario_app/app_api/src/app_api.c:283:6:app_npu_hw_init	8	static
+app/scenario_app/app_api/src/app_api.c:291:6:app_yuv422packed2planar	16	static
+app/scenario_app/app_api/src/app_api.c:309:6:app_yuv422packed2planar2	28	static

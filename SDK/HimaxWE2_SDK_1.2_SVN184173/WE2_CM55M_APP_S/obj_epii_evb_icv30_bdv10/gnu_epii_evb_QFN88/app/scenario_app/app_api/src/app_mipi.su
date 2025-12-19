@@ -1,0 +1,9 @@
+app/scenario_app/app_api/src/app_mipi.c:14:6:priv_mipi_csirx_print_info	16	static
+app/scenario_app/app_api/src/app_mipi.c:30:6:priv_mipi_csitx_print_info	8	static
+app/scenario_app/app_api/src/app_mipi.c:41:6:app_mipi_set_csirx_enable	48	static
+app/scenario_app/app_api/src/app_mipi.c:135:6:app_mipi_set_csirx_disable	8	static
+app/scenario_app/app_api/src/app_mipi.c:146:6:app_mipi_passthrough_init	80	static
+app/scenario_app/app_api/src/app_mipi.c:315:6:app_mipi_passthrough_deinit	8	static
+app/scenario_app/app_api/src/app_mipi.c:327:6:app_mipi_set_paththrough_on	16	static
+app/scenario_app/app_api/src/app_mipi.c:357:6:app_mipi_set_paththrough_off	16	static
+app/scenario_app/app_api/src/app_mipi.c:375:6:app_mipi_change_to_pll	24	static

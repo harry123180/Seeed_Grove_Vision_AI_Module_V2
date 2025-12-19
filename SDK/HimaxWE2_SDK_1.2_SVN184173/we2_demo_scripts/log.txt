@@ -1,0 +1,505 @@
+2024-01-30 10:30:21 INFO     Open SPI Slave device...
+2024-01-30 10:30:21 DEBUG    openByDescription done.
+2024-01-30 10:30:21 DEBUG    setClock done.
+2024-01-30 10:30:21 DEBUG    spiSlave_InitEx done.
+2024-01-30 10:30:21 DEBUG    spi_SetDrivingStrength done.
+2024-01-30 10:30:21 DEBUG    Open SPI Slave device done.
+2024-01-30 10:30:24 INFO     SPI Slave device closed.
+2024-01-30 10:30:27 INFO     Open SPI Slave device...
+2024-01-30 10:30:27 DEBUG    openByDescription done.
+2024-01-30 10:30:27 DEBUG    setClock done.
+2024-01-30 10:30:27 DEBUG    spiSlave_InitEx done.
+2024-01-30 10:30:27 DEBUG    spi_SetDrivingStrength done.
+2024-01-30 10:30:27 DEBUG    Open SPI Slave device done.
+2024-01-30 10:30:28 INFO     SPI Slave device closed.
+2024-01-30 10:30:31 INFO     Open SPI Slave device...
+2024-01-30 10:30:31 DEBUG    openByDescription done.
+2024-01-30 10:30:31 DEBUG    setClock done.
+2024-01-30 10:30:31 DEBUG    spiSlave_InitEx done.
+2024-01-30 10:30:31 DEBUG    spi_SetDrivingStrength done.
+2024-01-30 10:30:31 DEBUG    Open SPI Slave device done.
+2024-01-30 10:31:08 INFO     SPI Slave device closed.
+2024-01-30 14:01:02 INFO     Open SPI Slave device...
+2024-01-30 14:01:02 DEBUG    openByDescription done.
+2024-01-30 14:01:02 DEBUG    setClock done.
+2024-01-30 14:01:02 DEBUG    spiSlave_InitEx done.
+2024-01-30 14:01:02 DEBUG    spi_SetDrivingStrength done.
+2024-01-30 14:01:02 DEBUG    Open SPI Slave device done.
+2024-01-30 14:01:07 INFO     SPI Slave device closed.
+2024-01-30 14:01:16 INFO     Open SPI Slave device...
+2024-01-30 14:01:16 DEBUG    openByDescription done.
+2024-01-30 14:01:16 DEBUG    setClock done.
+2024-01-30 14:01:16 DEBUG    spiSlave_InitEx done.
+2024-01-30 14:01:16 DEBUG    spi_SetDrivingStrength done.
+2024-01-30 14:01:16 DEBUG    Open SPI Slave device done.
+2024-01-30 14:01:19 INFO     SPI Slave device closed.
+2024-01-30 14:02:46 INFO     Open SPI Slave device...
+2024-01-30 14:02:46 DEBUG    openByDescription done.
+2024-01-30 14:02:46 DEBUG    setClock done.
+2024-01-30 14:02:46 DEBUG    spiSlave_InitEx done.
+2024-01-30 14:02:46 DEBUG    spi_SetDrivingStrength done.
+2024-01-30 14:02:46 DEBUG    Open SPI Slave device done.
+2024-01-30 14:02:48 INFO     SPI Slave device closed.
+2024-01-30 14:03:23 INFO     Open SPI Slave device...
+2024-01-30 14:03:23 DEBUG    openByDescription done.
+2024-01-30 14:03:23 DEBUG    setClock done.
+2024-01-30 14:03:23 DEBUG    spiSlave_InitEx done.
+2024-01-30 14:03:23 DEBUG    spi_SetDrivingStrength done.
+2024-01-30 14:03:23 DEBUG    Open SPI Slave device done.
+2024-01-30 14:03:27 INFO     SPI Slave device closed.
+2024-01-30 14:03:33 INFO     Open SPI Slave device...
+2024-01-30 14:03:33 DEBUG    openByDescription done.
+2024-01-30 14:03:33 DEBUG    setClock done.
+2024-01-30 14:03:33 DEBUG    spiSlave_InitEx done.
+2024-01-30 14:03:33 DEBUG    spi_SetDrivingStrength done.
+2024-01-30 14:03:33 DEBUG    Open SPI Slave device done.
+2024-01-30 14:03:35 INFO     SPI Slave device closed.
+2024-01-30 14:03:38 INFO     Open SPI Slave device...
+2024-01-30 14:03:38 DEBUG    openByDescription done.
+2024-01-30 14:03:38 DEBUG    setClock done.
+2024-01-30 14:03:38 DEBUG    spiSlave_InitEx done.
+2024-01-30 14:03:38 DEBUG    spi_SetDrivingStrength done.
+2024-01-30 14:03:38 DEBUG    Open SPI Slave device done.
+2024-01-30 14:04:51 INFO     SPI Slave device closed.
+2024-01-30 14:05:03 INFO     Open SPI Slave device...
+2024-01-30 14:05:03 DEBUG    openByDescription done.
+2024-01-30 14:05:03 DEBUG    setClock done.
+2024-01-30 14:05:03 DEBUG    spiSlave_InitEx done.
+2024-01-30 14:05:03 DEBUG    spi_SetDrivingStrength done.
+2024-01-30 14:05:03 DEBUG    Open SPI Slave device done.
+2024-01-30 14:05:21 INFO     SPI Slave device closed.
+2024-01-30 14:08:59 INFO     Open SPI Slave device...
+2024-01-30 14:08:59 DEBUG    openByDescription done.
+2024-01-30 14:08:59 DEBUG    setClock done.
+2024-01-30 14:08:59 DEBUG    spiSlave_InitEx done.
+2024-01-30 14:08:59 DEBUG    spi_SetDrivingStrength done.
+2024-01-30 14:08:59 DEBUG    Open SPI Slave device done.
+2024-01-30 14:09:17 INFO     SPI Slave device closed.
+2024-01-30 14:50:30 INFO     Open SPI Slave device...
+2024-01-30 14:50:30 DEBUG    openByDescription done.
+2024-01-30 14:50:30 DEBUG    setClock done.
+2024-01-30 14:50:30 DEBUG    spiSlave_InitEx done.
+2024-01-30 14:50:30 DEBUG    spi_SetDrivingStrength done.
+2024-01-30 14:50:30 DEBUG    Open SPI Slave device done.
+2024-01-30 14:50:31 INFO     SPI Slave device closed.
+2024-01-30 14:55:23 INFO     Open SPI Slave device...
+2024-01-30 14:55:23 DEBUG    openByDescription done.
+2024-01-30 14:55:23 DEBUG    setClock done.
+2024-01-30 14:55:23 DEBUG    spiSlave_InitEx done.
+2024-01-30 14:55:23 DEBUG    spi_SetDrivingStrength done.
+2024-01-30 14:55:23 DEBUG    Open SPI Slave device done.
+2024-01-30 14:55:25 INFO     SPI Slave device closed.
+2024-02-05 16:46:01 INFO     Open SPI Slave device...
+2024-02-05 16:46:01 DEBUG    openByDescription done.
+2024-02-05 16:46:01 DEBUG    setClock done.
+2024-02-05 16:46:01 DEBUG    spiSlave_InitEx done.
+2024-02-05 16:46:01 DEBUG    spi_SetDrivingStrength done.
+2024-02-05 16:46:01 DEBUG    Open SPI Slave device done.
+2024-02-05 16:46:09 INFO     SPI Slave device closed.
+2024-02-05 16:48:10 INFO     Open SPI Slave device...
+2024-02-05 16:48:10 ERROR    Failed to Open FT4222 A.
+2024-02-05 16:48:10 ERROR    Failed to setClock
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_InitEx
+2024-02-05 16:48:10 ERROR    Failed to spi_SetDrivingStrength due to 'NoneType' object has no attribute 'spi_SetDrivingStrength'
+2024-02-05 16:48:10 ERROR    Open SPI Slave device FAILED!
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:10 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:11 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:12 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:13 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:14 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:15 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:16 ERROR    Failed to spiSlave_GetRxStatus due to 'SpiSlave' object has no attribute 'dev_hnd'
+2024-02-05 16:48:42 INFO     Open SPI Slave device...
+2024-02-05 16:48:42 DEBUG    openByDescription done.
+2024-02-05 16:48:42 DEBUG    setClock done.
+2024-02-05 16:48:42 DEBUG    spiSlave_InitEx done.
+2024-02-05 16:48:42 DEBUG    spi_SetDrivingStrength done.
+2024-02-05 16:48:42 DEBUG    Open SPI Slave device done.
+2024-02-05 16:48:50 INFO     SPI Slave device closed.
+2024-02-20 16:55:21 INFO     Open SPI Slave device...
+2024-02-20 16:55:21 DEBUG    openByDescription done.
+2024-02-20 16:55:21 DEBUG    setClock done.
+2024-02-20 16:55:21 DEBUG    spiSlave_InitEx done.
+2024-02-20 16:55:21 DEBUG    spi_SetDrivingStrength done.
+2024-02-20 16:55:21 DEBUG    Open SPI Slave device done.

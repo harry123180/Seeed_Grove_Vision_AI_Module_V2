@@ -1,0 +1,2 @@
+app/scenario_app/app_api/src/app_memory.c:5:7:app_mem_alloc	24	static
+app/scenario_app/app_api/src/app_memory.c:25:6:app_mem_free	0	static

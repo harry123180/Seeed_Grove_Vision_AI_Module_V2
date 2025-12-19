@@ -1,0 +1,12 @@
+app/scenario_app/sample_code_app/src/app_i2c_cmd.c:100:13:i2ccomm_1_callback_fun_rx	8	static
+app/scenario_app/sample_code_app/src/app_i2c_cmd.c:58:13:i2ccomm_0_callback_fun_rx	8	static
+app/scenario_app/sample_code_app/src/app_i2c_cmd.c:120:13:i2ccomm_1_callback_fun_err	8	static
+app/scenario_app/sample_code_app/src/app_i2c_cmd.c:78:13:i2ccomm_0_callback_fun_err	8	static
+app/scenario_app/sample_code_app/src/app_i2c_cmd.c:88:13:i2ccomm_1_callback_fun_tx	8	static
+app/scenario_app/sample_code_app/src/app_i2c_cmd.c:46:13:i2ccomm_0_callback_fun_tx	16	static
+app/scenario_app/sample_code_app/src/app_i2c_cmd.c:30:6:set_i2cs_enable_write	0	static
+app/scenario_app/sample_code_app/src/app_i2c_cmd.c:35:6:get_i2cs_enable_write	0	static
+app/scenario_app/sample_code_app/src/app_i2c_cmd.c:225:9:app_i2c_cmd_init	32	static
+app/scenario_app/sample_code_app/src/app_i2c_cmd.c:299:8:app_i2c_cmd_write	40	static
+app/scenario_app/sample_code_app/src/app_i2c_cmd.c:287:6:app_i2c_cmd_polling	56	static
+app/scenario_app/sample_code_app/src/app_i2c_cmd.c:336:6:app_i2c_cmd_reg_cstm_feature	0	static

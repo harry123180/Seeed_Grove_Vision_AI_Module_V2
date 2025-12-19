@@ -1,0 +1,1 @@
+app/scenario_app/app_api/src/ota_update.c:12:17:i2ccomm_cmd_process_ota_flow	16	static

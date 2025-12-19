@@ -1,0 +1,1 @@
+C:\Users\TSIC\OneDrive - 南臺科技大學\廠商資料\泓舉工作室\產引\產發\奇景WiseEye\HimaxWE2_SDK_1.2_SVN184173\we2_image_gen_local\output_case1_secboot_nodiv\inter_files\cm55m_s_application_p3_s1.img 0x3a180000 0x3a015000 0x0010000 0

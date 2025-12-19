@@ -1,0 +1,20 @@
+Google 搜尋關鍵字：
+
+Claude Code terminal blank text output
+
+或
+
+Claude Code 輸出空白
+
+或
+
+VS Code terminal invisible characters encoding
+
+可能原因：
+1. 終端機字型不支援某些 Unicode 字元
+2. 編碼問題 (UTF-8 vs 其他)
+3. VS Code 終端機設定問題
+
+嘗試解決：
+1. 在 VS Code 設定中搜尋 "terminal font"
+2. 換一個字型試試，例如 "Consolas" 或 "Courier New"

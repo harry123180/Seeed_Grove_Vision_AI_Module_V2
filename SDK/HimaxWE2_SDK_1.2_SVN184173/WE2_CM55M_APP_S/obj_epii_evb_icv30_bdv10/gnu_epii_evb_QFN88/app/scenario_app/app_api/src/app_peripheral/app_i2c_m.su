@@ -1,0 +1,10 @@
+app/scenario_app/app_api/src/app_peripheral/app_i2c_m.c:8:13:i2c_mst0_tx_callback_fun	0	static
+app/scenario_app/app_api/src/app_peripheral/app_i2c_m.c:32:13:i2c_mst1_rx_callback_fun	0	static
+app/scenario_app/app_api/src/app_peripheral/app_i2c_m.c:38:13:i2c_mst1_err_callback_fun	0	static
+app/scenario_app/app_api/src/app_peripheral/app_i2c_m.c:14:13:i2c_mst0_rx_callback_fun	0	static
+app/scenario_app/app_api/src/app_peripheral/app_i2c_m.c:20:13:i2c_mst0_err_callback_fun	0	static
+app/scenario_app/app_api/src/app_peripheral/app_i2c_m.c:26:13:i2c_mst1_tx_callback_fun	0	static
+app/scenario_app/app_api/src/app_peripheral/app_i2c_m.c:44:8:app_i2c_mst_init	16	static
+app/scenario_app/app_api/src/app_peripheral/app_i2c_m.c:82:8:app_i2c_mst_deinit	8	static
+app/scenario_app/app_api/src/app_peripheral/app_i2c_m.c:92:8:app_i2c_mst_write	16	static
+app/scenario_app/app_api/src/app_peripheral/app_i2c_m.c:107:8:app_i2c_mst_write_read	16	static

@@ -1,0 +1,36 @@
+./library/inference/tflmtag2209_u55tag2205/tensorflow/lite/micro/micro_error_reporter.h:30:3:virtual tflite::MicroErrorReporter::~MicroErrorReporter()	0	static
+./library/inference/tflmtag2209_u55tag2205/tensorflow/lite/core/api/op_resolver.h:58:35:virtual tflite::OpResolver::TfLiteDelegatePtrVector tflite::OpResolver::GetDelegates(int) const	0	static
+./library/inference/tflmtag2209_u55tag2205/tensorflow/lite/core/api/op_resolver.h:77:34:virtual tflite::OpResolver::TfLiteDelegateCreators tflite::OpResolver::GetDelegateCreators() const	0	static
+./library/inference/tflmtag2209_u55tag2205/tensorflow/lite/core/api/op_resolver.h:107:40:virtual tflite::OpResolver::TfLiteOpaqueDelegateCreators tflite::OpResolver::GetOpaqueDelegateCreators() const	0	static
+./library/inference/tflmtag2209_u55tag2205/tensorflow/lite/core/api/op_resolver.h:125:16:virtual bool tflite::OpResolver::MayContainUserDefinedOps() const	0	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:127:6:bool det_objectness_comparator(detection&, detection&)	0	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:293:6:bool det_comparator(detection&, detection&)	4	static
+./library/inference/tflmtag2209_u55tag2205/tensorflow/lite/micro/micro_mutable_op_resolver.h:44:7:virtual tflite::MicroMutableOpResolver<1>::~MicroMutableOpResolver()	0	static
+./library/inference/tflmtag2209_u55tag2205/tensorflow/lite/micro/micro_mutable_op_resolver.h:78:41:TfLiteStatus (* tflite::MicroMutableOpResolver<tOpCount>::GetOpDataParser(tflite::BuiltinOperator) const)(const tflite::Operator*, tflite::ErrorReporter*, tflite::BuiltinDataAllocator*, void**) [with unsigned int tOpCount = 1]	8	static
+./library/inference/tflmtag2209_u55tag2205/tensorflow/lite/micro/micro_mutable_op_resolver.h:67:29:const TfLiteRegistration* tflite::MicroMutableOpResolver<tOpCount>::FindOp(const char*) const [with unsigned int tOpCount = 1]	8	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:372:13:void _arm_npu_irq_handler()	0	static
+./library/inference/tflmtag2209_u55tag2205/tensorflow/lite/micro/micro_mutable_op_resolver.h:55:29:const TfLiteRegistration* tflite::MicroMutableOpResolver<tOpCount>::FindOp(tflite::BuiltinOperator) const [with unsigned int tOpCount = 1]	0	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:394:12:int _arm_npu_init()	64	static
+./library/inference/tflmtag2209_u55tag2205/tensorflow/lite/micro/micro_op_resolver.h:53:29:virtual const TfLiteRegistration* tflite::MicroOpResolver::FindOp(tflite::BuiltinOperator, int) const	8	static
+./library/inference/tflmtag2209_u55tag2205/tensorflow/lite/micro/micro_op_resolver.h:60:29:virtual const TfLiteRegistration* tflite::MicroOpResolver::FindOp(const char*, int) const	8	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:110:17:void DebugLog(const char*)	0	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:115:6:void free_dets(std::forward_list<detection>&)	8	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:122:7:float sigmoid(float)	8	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:132:6:void insert_topN_det(std::forward_list<detection>&, detection)	24	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:231:8:branch create_brach(int, int, float*, int8_t*, size_t, float, int)	0	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:243:9:network creat_network(int, int, int, int, branch*, int)	24	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:256:7:float overlap(float, float, float, float)	0	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:267:7:float box_intersection(box, box)	32	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:276:7:float box_union(box, box)	32	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:283:7:float box_iou(box, box)	32	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:319:8:boxabs box_c(box, box)	80	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:333:7:float box_diou(box, box)	152	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:451:9:int32_t app_algo_init()	40	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:641:6:void app_algo_npu_init()	0	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:646:6:void app_algo_npu_deinit()	0	static
+c:\arm-gnu-toolchain-12.3.rel1-mingw-w64-i686-arm-none-eabi\arm-none-eabi\include\c++\12.3.1\bits\forward_list.tcc:416:7:void std::forward_list<_Tp, _Alloc>::sort(_Comp) [with _Comp = bool (*)(detection&, detection&); _Tp = detection; _Alloc = std::allocator<detection>]	48	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:298:6:void do_nms_sort(std::forward_list<detection>&, int, float)	96	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:351:6:void diounms_sort(std::forward_list<detection>&, int, float)	56	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:149:30:std::forward_list<detection> get_network_boxes(network*, int, int, float, int*)	216	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:622:9:int32_t app_algo_run(uint32_t, uint32_t, uint32_t, ALGO_RESULT*)	136	static
+app/scenario_app/sample_code_app/src/yolo_fastest/app_algo.cc:649:1:cc)	0	static

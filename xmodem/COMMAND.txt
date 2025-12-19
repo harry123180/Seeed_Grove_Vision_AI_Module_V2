@@ -1,0 +1,54 @@
+方法一：使用 xmodem_send_improved.py（推薦）
+=============================================
+這個改進版本會持續發送按鍵來捕捉 bootloader。
+
+1. 執行指令：
+   python xmodem_send_improved.py --port COM3 --file ..\we2_image_gen_local\output_case1_sec_wlcsp\output.img
+
+2. 看到提示訊息後，按下板子上的 RESET 按鈕
+
+3. 應該會看到 "[OK] Bootloader detected!" 和進度條
+
+
+方法二：使用原版 xmodem_send.py
+===============================
+1. 執行指令：
+   python xmodem_send.py --port COM3 --file ..\we2_image_gen_local\output_case1_sec_wlcsp\output.img
+
+2. 看到 "Please press reset button!!" 後，立刻按下 RESET 按鈕
+
+3. 應該會看到 bootloader 訊息和進度條
+
+
+方法三：手動進入 bootloader（如果上面方法都失敗）
+=================================================
+1. 開啟 Tera Term 或 PuTTY，連接 COM3，鮑率 115200
+
+2. 按住鍵盤上任意按鍵（不要按 Enter）- 持續按住！
+
+3. 在按住按鍵的同時，按下板子上的 RESET 按鈕
+
+4. 會看到 bootloader 選單：
+   1. flash image update
+   2. reserved
+   3. flash read
+
+5. 放開按鍵，然後按 "1" 進入 xmodem 模式
+
+6. 使用終端機的 XMODEM 發送功能發送 output.img
+   - Tera Term: File -> Transfer -> XMODEM -> Send
+   - 選擇 output.img 檔案
+
+
+疑難排解：
+==========
+- 如果看到亂碼：時機不對。Bootloader 運行在 115200 鮑率，但只等待 100ms。
+  之後韌體會以 921600 鮑率啟動。
+
+- 如果 "Bootloader wait timeout"：執行指令後要更快按下 RESET
+
+- 確保已安裝 xmodem 模組：pip install xmodem pyserial
+
+- Bootloader 鮑率：115200
+- 韌體鮑率：921600（啟動後）
+

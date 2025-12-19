@@ -1,0 +1,10 @@
+[12:18:23.655][][][Warning]QMetaObject::connectSlotsByName: No matching signal for on_lineEdit_textChanged(QString),{0}
+[12:18:23.660][][][Warning]QMetaObject::connectSlotsByName: No matching signal for on_lineEdit_textChanged(QString),{0}
+[12:27:24.297][][][Warning]QMetaObject::connectSlotsByName: No matching signal for on_lineEdit_textChanged(QString),{0}
+[12:27:24.302][][][Warning]QMetaObject::connectSlotsByName: No matching signal for on_lineEdit_textChanged(QString),{0}
+[12:38:14.268][][][Warning]QMetaObject::connectSlotsByName: No matching signal for on_lineEdit_textChanged(QString),{0}
+[12:38:14.273][][][Warning]QMetaObject::connectSlotsByName: No matching signal for on_lineEdit_textChanged(QString),{0}
+[12:45:03.612][][][Warning]QMetaObject::connectSlotsByName: No matching signal for on_lineEdit_textChanged(QString),{0}
+[12:45:03.616][][][Warning]QMetaObject::connectSlotsByName: No matching signal for on_lineEdit_textChanged(QString),{0}
+[13:32:12.655][][][Warning]QMetaObject::connectSlotsByName: No matching signal for on_lineEdit_textChanged(QString),{0}
+[13:32:12.660][][][Warning]QMetaObject::connectSlotsByName: No matching signal for on_lineEdit_textChanged(QString),{0}

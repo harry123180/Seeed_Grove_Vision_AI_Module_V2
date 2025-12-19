@@ -1,0 +1,7 @@
+app/scenario_app/app_api/src/app_peripheral/app_uart.c:24:13:uart_callback_fun_tx	0	static
+app/scenario_app/app_api/src/app_peripheral/app_uart.c:73:13:uart_callback_fun_err	0	static
+app/scenario_app/app_api/src/app_peripheral/app_uart.c:29:13:uart_callback_fun_rx	40	static
+app/scenario_app/app_api/src/app_peripheral/app_uart.c:78:9:app_uart_open	16	static
+app/scenario_app/app_api/src/app_peripheral/app_uart.c:141:9:app_uart_close	16	static
+app/scenario_app/app_api/src/app_peripheral/app_uart.c:176:9:app_uart_read	32	static
+app/scenario_app/app_api/src/app_peripheral/app_uart.c:231:9:app_uart_write	16	static

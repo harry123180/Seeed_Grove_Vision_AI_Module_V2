@@ -1,0 +1,7 @@
+app/scenario_app/app_api/src/hm0360_mono/app_cisdp_cfg.c:123:5:app_cisdp_datapath_init	16	static
+app/scenario_app/app_api/src/hm0360_mono/app_cisdp_cfg.c:131:5:app_cisdp_sensor_init	16	static
+app/scenario_app/app_api/src/hm0360_mono/app_cisdp_cfg.c:193:6:app_cisdp_sensor_start	8	static
+app/scenario_app/app_api/src/hm0360_mono/app_cisdp_cfg.c:235:6:app_cisdp_sensor_start_AOS	8	static
+app/scenario_app/app_api/src/hm0360_mono/app_cisdp_cfg.c:257:6:app_cisdp_sensor_stop	8	static
+app/scenario_app/app_api/src/hm0360_mono/app_cisdp_cfg.c:294:6:hm0360_mono_cis_strobe_on	8	static
+app/scenario_app/app_api/src/hm0360_mono/app_cisdp_cfg.c:310:6:hm0360_mono_cis_strobe_off	8	static

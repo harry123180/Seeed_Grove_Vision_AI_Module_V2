@@ -1,0 +1,13 @@
+app/scenario_app/app_api/src/app_peripheral/app_adcc.c:137:13:app_adcc_sg_cb	8	static
+app/scenario_app/app_api/src/app_peripheral/app_adcc.c:130:13:app_adcc_constrain_cb	8	static
+app/scenario_app/app_api/src/app_peripheral/app_adcc.c:105:13:app_adcc_callback_ch_3	8	static
+app/scenario_app/app_api/src/app_peripheral/app_adcc.c:80:13:app_adcc_callback_ch_2	8	static
+app/scenario_app/app_api/src/app_peripheral/app_adcc.c:55:13:app_adcc_callback_ch_1	8	static
+app/scenario_app/app_api/src/app_peripheral/app_adcc.c:30:13:app_adcc_callback_ch_0	8	static
+app/scenario_app/app_api/src/app_peripheral/app_adcc.c:144:8:app_adcc_init	72	static
+app/scenario_app/app_api/src/app_peripheral/app_adcc.c:177:8:app_adcc_deinit	8	static
+app/scenario_app/app_api/src/app_peripheral/app_adcc.c:185:8:app_adcc_enable	8	static
+app/scenario_app/app_api/src/app_peripheral/app_adcc.c:192:8:app_adcc_get_def_cfg	12	static
+app/scenario_app/app_api/src/app_peripheral/app_adcc.c:199:8:app_adcc_set_cfg	24	static
+app/scenario_app/app_api/src/app_peripheral/app_adcc.c:235:8:app_adcc_read_status	24	static
+app/scenario_app/app_api/src/app_peripheral/app_adcc.c:250:8:app_adcc_dump_reg	16	static

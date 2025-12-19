@@ -1,0 +1,1 @@
+C:\Users\TSIC\OneDrive - 南臺科技大學\廠商資料\泓舉工作室\產引\產發\奇景WiseEye\HimaxWE2_SDK_1.2_SVN184173\we2_image_gen_local\common\bl\WE2_FW_BL_arm_we2_evb_xtal24rc96rc32k.bin 0x34005000 0x3a0154ac 0x0010000 0
