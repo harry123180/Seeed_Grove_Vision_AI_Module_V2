@@ -7,8 +7,12 @@ import serial.tools.list_ports
 import threading
 import json
 import time
+import logging
 from typing import Optional
 from queue import Queue
+
+# 取得 serial_data logger（與 main_window 共用）
+serial_logger = logging.getLogger("serial_data")
 
 
 class SerialReader(threading.Thread):
@@ -68,6 +72,8 @@ class SerialReader(threading.Thread):
                         self.buffer += text
 
                         if text.strip():
+                            # 記錄原始串口資料（來源層級）
+                            serial_logger.debug(f"[RX] {text.strip()}")
                             self.raw_queue.put(text)
 
                         self._parse_buffer()

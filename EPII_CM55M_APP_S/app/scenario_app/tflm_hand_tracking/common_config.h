@@ -10,9 +10,10 @@
 
 /* ============================================
  * Model Flash Addresses
+ * Palm Detection: ~2.1MB, Hand Landmark: ~1.8MB
  * ============================================ */
 #define PALM_DETECT_FLASH_ADDR      (BASE_ADDR_FLASH1_R_ALIAS + 0x400000)  // 4MB offset
-#define HAND_LANDMARK_FLASH_ADDR    (BASE_ADDR_FLASH1_R_ALIAS + 0x480000)  // 4.5MB offset
+#define HAND_LANDMARK_FLASH_ADDR    (BASE_ADDR_FLASH1_R_ALIAS + 0x620000)  // 6.125MB offset (after palm det)
 
 /* ============================================
  * Input Tensor Dimensions
@@ -39,8 +40,9 @@
 
 /* ============================================
  * Memory Configuration
+ * Palm Detection model requires ~1.5MB tensor arena
  * ============================================ */
-#define TENSOR_ARENA_SIZE           (512 * 1024)    // 512KB
+#define TENSOR_ARENA_SIZE           (1600 * 1024)   // 1.6MB (Palm Det needs ~1.5MB)
 #define TENSOR_ARENA_TAIL_SIZE      1536            // Model separation offset
 
 /* ============================================

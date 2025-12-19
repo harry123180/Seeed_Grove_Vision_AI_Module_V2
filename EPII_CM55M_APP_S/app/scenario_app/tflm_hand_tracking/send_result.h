@@ -22,6 +22,7 @@ extern "C" {
 #define FM_POINT_NUM 468
 #define FM_IRIS_POINT_NUM 10
 #define MAX_FACE_LAND_MARK_TRACKED_POINT 68
+#define HAND_LANDMARK_NUM 21
 typedef enum {
     EL_OK      = 0,  // success
     EL_AGAIN   = 1,  // try again
@@ -119,6 +120,12 @@ typedef struct el_fd_fl_el_9pt_t {
     el_struct_angle el_fl_angle;
 } el_fd_fl_el_9pt_t;
 
+typedef struct el_hand_t {
+    el_box_t el_box;                           // Palm detection bounding box
+    el_point_t el_landmark[HAND_LANDMARK_NUM]; // 21 hand landmarks
+    uint8_t handedness;                        // 0=left, 1=right
+} el_hand_t;
+
 /**
  * @brief Algorithm Types
  */
@@ -182,3 +189,4 @@ std::string  algo_tick_2_json_str(uint32_t algo_tick);
 std::string  fd_fl_results_2_json_str(std::forward_list<el_fd_fl_t>& results);
 std::string  fd_fl_el_9t_results_2_json_str(std::forward_list<el_fd_fl_el_9pt_t>& results);
 std::string  fm_face_bbox_results_2_json_str(std::forward_list<el_box_t>& results);
+std::string  hands_results_2_json_str(std::forward_list<el_hand_t>& results);

@@ -5,6 +5,9 @@
 from PIL import Image, ImageDraw
 from typing import List
 
+# Import hand drawing functions
+from .hand_drawing import draw_hands, draw_hand_landmarks, draw_hand_bbox
+
 # COCO 80 類別
 COCO_CLASSES = [
     "person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck",

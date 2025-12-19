@@ -799,12 +799,51 @@ std::string  algo_tick_2_json_str(uint32_t algo_tick) {
     const char* delim = "";
 
     ss = "\"algo_tick\": [";
-    
+
     ss += concat_strings(delim,
                             "[",
                             std::to_string(algo_tick),
                             "]");
     delim = ", ";
+    ss += "]";
+
+    return ss;
+}
+
+
+std::string hands_results_2_json_str(std::forward_list<el_hand_t>& results) {
+    std::string ss;
+    const char* hand_delim = "";
+
+    ss = "\"hands\": [";
+    std::forward_list<el_hand_t>::iterator it;
+    for (it = results.begin(); it != results.end(); ++it) {
+        // Format: [[[bbox], [lm0], [lm1], ..., [lm20]], handedness]
+        ss += hand_delim;
+        ss += "[[[";  // Start hand: [ for hand array, [ for points array, [ for bbox
+
+        // Add bbox
+        ss += concat_strings(
+            std::to_string(it->el_box.x), ", ",
+            std::to_string(it->el_box.y), ", ",
+            std::to_string(it->el_box.w), ", ",
+            std::to_string(it->el_box.h), ", ",
+            std::to_string(it->el_box.score), ", ",
+            std::to_string(it->el_box.target),
+            "]");  // Close bbox
+
+        // Add 21 hand landmarks
+        for (int i = 0; i < HAND_LANDMARK_NUM; i++) {
+            ss += concat_strings(", [",
+                std::to_string(it->el_landmark[i].x), ", ",
+                std::to_string(it->el_landmark[i].y),
+                "]");
+        }
+
+        // Close points array and add handedness
+        ss += concat_strings("], ", std::to_string(it->handedness), "]");
+        hand_delim = ", ";
+    }
     ss += "]";
 
     return ss;

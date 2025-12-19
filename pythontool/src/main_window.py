@@ -8,14 +8,42 @@ import base64
 import io
 import time
 import threading
+import logging
+import os
+from datetime import datetime
 from PIL import Image, ImageTk
 from typing import Optional, Dict, Any
 from queue import Queue, Empty
+
+# 設定 logging
+log_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "logs")
+os.makedirs(log_dir, exist_ok=True)
+log_file = os.path.join(log_dir, f"serial_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+
+# 設定串口資料專用 logger
+serial_logger = logging.getLogger("serial_data")
+serial_logger.setLevel(logging.DEBUG)
+# 檔案 handler
+fh = logging.FileHandler(log_file, encoding='utf-8')
+fh.setLevel(logging.DEBUG)
+fh.setFormatter(logging.Formatter('%(asctime)s - %(message)s'))
+serial_logger.addHandler(fh)
+# 終端 handler
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+ch.setFormatter(logging.Formatter('%(asctime)s [SERIAL] %(message)s'))
+serial_logger.addHandler(ch)
+
+print(f"[INFO] Serial log file: {log_file}")
 
 from .serial_reader import SerialReader, list_serial_ports
 from .drawing import draw_boxes, draw_keypoints, draw_face_mesh, resize_image, get_class_name
 from .xmodem_flasher import XmodemFlasher, FlashProgress
 from .image_processor import ImageProcessor, ProcessedFrame
+from .model_config import (
+    PRESETS, get_firmware_path, load_preset_models,
+    validate_models_with_actual_sizes, get_project_root
+)
 
 
 class GroveVisionAITool(ctk.CTk):
@@ -109,11 +137,16 @@ class GroveVisionAITool(ctk.CTk):
         self.image_label.pack(fill="both", expand=True)
 
         # 原始資料顯示區
-        raw_label = ctk.CTkLabel(right_frame, text="原始串口資料", font=("Arial", 14, "bold"))
-        raw_label.pack(anchor="w")
+        raw_header = ctk.CTkFrame(right_frame)
+        raw_header.pack(fill="x")
+        ctk.CTkLabel(raw_header, text="原始串口資料", font=("Arial", 14, "bold")).pack(side="left")
+        ctk.CTkButton(raw_header, text="複製", width=60, command=self._copy_raw_text).pack(side="right", padx=5)
+        ctk.CTkButton(raw_header, text="清除", width=60, command=self._clear_raw_text).pack(side="right")
 
         self.raw_text = ctk.CTkTextbox(right_frame, height=150, font=("Consolas", 10))
         self.raw_text.pack(fill="x", pady=(0, 5))
+        # 啟用文字選擇
+        self.raw_text.configure(state="normal")
 
     def _create_flash_tab(self):
         """建立韌體燒錄頁籤"""
@@ -187,6 +220,9 @@ class GroveVisionAITool(ctk.CTk):
 
         ctk.CTkButton(preset_frame, text="YOLOv8 Pose", width=100,
                       command=self._preset_yolov8_pose).pack(side="left", padx=5)
+
+        ctk.CTkButton(preset_frame, text="Hand Track", width=100,
+                      command=self._preset_hand_tracking).pack(side="left", padx=5)
 
         # 進度條
         progress_frame = ctk.CTkFrame(left_frame)
@@ -473,7 +509,30 @@ class GroveVisionAITool(ctk.CTk):
         self.is_connected = False
         self.connect_btn.configure(text="Connect", fg_color="green")
         self.status_label.configure(text="未連接")
-        self._log("已斷開連接")
+
+    def _copy_raw_text(self):
+        """複製原始串口資料到剪貼簿"""
+        import pyperclip
+        content = self.raw_text.get("1.0", "end-1c")
+        if content.strip():
+            try:
+                pyperclip.copy(content)
+                self._log(f"已複製 {len(content)} 字元到剪貼簿")
+            except Exception as e:
+                # 備用方法：使用 tkinter
+                try:
+                    self.clipboard_clear()
+                    self.clipboard_append(content)
+                    self.update()  # 強制更新
+                    self._log(f"已複製 {len(content)} 字元到剪貼簿 (tkinter)")
+                except Exception as e2:
+                    self._log(f"複製失敗: {e2}")
+        else:
+            self._log("沒有資料可複製")
+
+    def _clear_raw_text(self):
+        """清除原始串口資料"""
+        self.raw_text.delete("1.0", "end")
 
     def _send_mode(self, mode: int):
         """發送模式切換"""
@@ -749,60 +808,76 @@ class GroveVisionAITool(ctk.CTk):
         self.model_paths = []
         self.model_listbox.delete("1.0", "end")
 
-    def _preset_face_mesh(self):
-        """預設 Face Mesh 配置"""
-        import os
-        base = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-        model_dir = os.path.join(base, "model_zoo", "tflm_fd_fm")
-        fw_dir = os.path.join(base, "we2_image_gen_local", "output_case1_sec_wlcsp")
+    def _load_preset(self, preset_key: str):
+        """
+        通用預設配置載入方法
 
-        self.firmware_path.set(os.path.join(fw_dir, "output.img"))
+        Args:
+            preset_key: 預設配置的 key (face_mesh, yolov8_od, etc.)
+        """
+        import os
+
+        preset = PRESETS.get(preset_key)
+        if not preset:
+            messagebox.showerror("錯誤", f"未知的預設配置: {preset_key}")
+            return
+
+        # 設定韌體路徑
+        fw_path = get_firmware_path()
+        if os.path.exists(fw_path):
+            self.firmware_path.set(fw_path)
+        else:
+            self._log_flash(f"警告: 韌體不存在 - {fw_path}")
+
+        # 清除並載入模型
         self._clear_models()
 
-        models = [
-            ("0_fd_0x200000.tflite", 0x200000),
-            ("1_fm_0x280000.tflite", 0x280000),
-            ("2_il_0x32A000.tflite", 0x32A000),
-        ]
-        for name, addr in models:
-            path = os.path.join(model_dir, name)
-            if os.path.exists(path):
-                self.model_paths.append((path, addr, 0))
-                self.model_listbox.insert("end", f"{name} @ 0x{addr:X}\n")
+        try:
+            models = load_preset_models(preset_key)
+
+            if not models:
+                self._log_flash(f"警告: 未找到 {preset.name} 的模型檔案")
+                return
+
+            # 驗證模型配置
+            errors = validate_models_with_actual_sizes(models, get_project_root())
+            if errors:
+                error_msg = "模型配置問題:\n" + "\n".join(f"• {e}" for e in errors)
+                self._log_flash(error_msg)
+                messagebox.showwarning("配置警告", error_msg)
+
+            # 載入模型
+            for path, addr, offset in models:
+                if os.path.exists(path):
+                    self.model_paths.append((path, addr, offset))
+                    name = os.path.basename(path)
+                    size = os.path.getsize(path)
+                    size_str = f"{size / (1024*1024):.1f}MB" if size > 1024*1024 else f"{size // 1024}KB"
+                    self.model_listbox.insert("end", f"{name} @ 0x{addr:X} ({size_str})\n")
+
+            self._log_flash(f"已載入 {preset.name} 配置: {len(models)} 個模型")
+
+        except Exception as e:
+            messagebox.showerror("錯誤", f"載入預設配置失敗: {e}")
+
+    def _log_flash(self, msg: str):
+        """寫入燒錄日誌"""
+        timestamp = time.strftime("%H:%M:%S")
+        self.flash_log.insert("end", f"[{timestamp}] {msg}\n")
+        self.flash_log.see("end")
+
+    # 預設配置快捷方法 (向後相容)
+    def _preset_face_mesh(self):
+        self._load_preset("face_mesh")
 
     def _preset_yolov8_od(self):
-        """預設 YOLOv8 OD 配置"""
-        import os
-        base = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-        model_dir = os.path.join(base, "model_zoo", "tflm_yolov8_od")
-        fw_dir = os.path.join(base, "we2_image_gen_local", "output_case1_sec_wlcsp")
-
-        self.firmware_path.set(os.path.join(fw_dir, "output.img"))
-        self._clear_models()
-
-        for f in os.listdir(model_dir):
-            if f.endswith('.tflite'):
-                addr = self._parse_flash_addr(f)
-                path = os.path.join(model_dir, f)
-                self.model_paths.append((path, addr, 0))
-                self.model_listbox.insert("end", f"{f} @ 0x{addr:X}\n")
+        self._load_preset("yolov8_od")
 
     def _preset_yolov8_pose(self):
-        """預設 YOLOv8 Pose 配置"""
-        import os
-        base = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-        model_dir = os.path.join(base, "model_zoo", "tflm_yolov8_pose")
-        fw_dir = os.path.join(base, "we2_image_gen_local", "output_case1_sec_wlcsp")
+        self._load_preset("yolov8_pose")
 
-        self.firmware_path.set(os.path.join(fw_dir, "output.img"))
-        self._clear_models()
-
-        for f in os.listdir(model_dir):
-            if f.endswith('.tflite'):
-                addr = self._parse_flash_addr(f)
-                path = os.path.join(model_dir, f)
-                self.model_paths.append((path, addr, 0))
-                self.model_listbox.insert("end", f"{f} @ 0x{addr:X}\n")
+    def _preset_hand_tracking(self):
+        self._load_preset("hand_tracking")
 
     def _update_flash_progress(self, progress: FlashProgress):
         """更新燒錄進度"""
@@ -833,6 +908,8 @@ class GroveVisionAITool(ctk.CTk):
 
     def _start_flash(self):
         """開始燒錄"""
+        import os
+
         port = self.flash_port_combo.get()
         if not port:
             messagebox.showerror("錯誤", "請選擇串口")
@@ -843,20 +920,52 @@ class GroveVisionAITool(ctk.CTk):
             messagebox.showerror("錯誤", "請選擇韌體檔案")
             return
 
+        if not os.path.exists(fw_path):
+            messagebox.showerror("錯誤", f"韌體檔案不存在: {fw_path}")
+            return
+
+        # 驗證模型配置
+        if self.model_paths:
+            errors = validate_models_with_actual_sizes(self.model_paths, get_project_root())
+            if errors:
+                error_msg = "模型配置錯誤:\n" + "\n".join(f"• {e}" for e in errors)
+                result = messagebox.askyesno(
+                    "配置警告",
+                    f"{error_msg}\n\n是否仍要繼續燒錄？"
+                )
+                if not result:
+                    return
+
         self.flash_btn.configure(state="disabled")
         self.stop_flash_btn.configure(state="normal")
 
         def flash_thread():
-            self.flasher = XmodemFlasher()
-            self.flasher.set_progress_callback(
-                lambda p: self.after(0, lambda: self._update_flash_progress(p))
-            )
+            try:
+                self.flasher = XmodemFlasher()
+                self.flasher.set_progress_callback(
+                    lambda p: self.after(0, lambda: self._update_flash_progress(p))
+                )
 
-            if not self.flasher.connect(port, baudrate=921600):
-                return
+                # Grove Vision AI V2 bootloader 使用 921600 baud
+                if not self.flasher.connect(port, baudrate=921600):
+                    self.flasher.progress.status = "error"
+                    self.flasher.progress.log_message = "無法連接串口"
+                    self.after(0, lambda: self._update_flash_progress(self.flasher.progress))
+                    return
 
-            self.flasher.flash_all(fw_path, self.model_paths, protocol='xmodem')
-            self.flasher.disconnect()
+                # 使用 xmodem1k (1024 byte packets) 提高大檔案傳輸穩定性
+                result = self.flasher.flash_all(fw_path, self.model_paths)
+                self.flasher.disconnect()
+
+                # 確保最終狀態更新到 UI
+                if not result and self.flasher.progress.status != "error":
+                    self.flasher.progress.status = "error"
+                self.after(0, lambda: self._update_flash_progress(self.flasher.progress))
+
+            except Exception as e:
+                self.after(0, lambda: messagebox.showerror("燒錄錯誤", str(e)))
+                self.after(0, lambda: self.flash_btn.configure(state="normal"))
+                self.after(0, lambda: self.stop_flash_btn.configure(state="disabled"))
 
         threading.Thread(target=flash_thread, daemon=True).start()
 

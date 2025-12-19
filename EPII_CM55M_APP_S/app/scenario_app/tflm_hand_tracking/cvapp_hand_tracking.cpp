@@ -14,6 +14,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
+#include <forward_list>
 
 #include "WE2_device.h"
 #include "board.h"
@@ -82,7 +83,7 @@ TfLiteTensor *hand_output_landmarks = nullptr;
 /* ============================================
  * Op Resolver
  * ============================================ */
-static tflite::MicroMutableOpResolver<2> op_resolver;
+static tflite::MicroMutableOpResolver<4> op_resolver;
 
 /* ============================================
  * State Variables
@@ -271,6 +272,14 @@ int cv_hand_tracking_init(
             xprintf("[Hand Tracking] Failed to add Pad operator\n");
             return -1;
         }
+        if (kTfLiteOk != op_resolver.AddQuantize()) {
+            xprintf("[Hand Tracking] Failed to add Quantize operator\n");
+            return -1;
+        }
+        if (kTfLiteOk != op_resolver.AddDequantize()) {
+            xprintf("[Hand Tracking] Failed to add Dequantize operator\n");
+            return -1;
+        }
     }
 
     /* ---- Create Interpreters ---- */
@@ -419,6 +428,52 @@ int cv_hand_tracking_run(struct_hand_algoResult *result) {
         }
     }
     #endif
+
+    /* ---- Send Results via UART ---- */
+    // Convert to el_hand_t format for JSON serialization
+    std::forward_list<el_hand_t> el_hands;
+    for (int i = 0; i < result->num_hands; i++) {
+        el_hand_t el_hand;
+        hand_result_t* h = &result->hands[i];
+
+        // Copy bounding box
+        el_hand.el_box.x = h->palm.x;
+        el_hand.el_box.y = h->palm.y;
+        el_hand.el_box.w = h->palm.width;
+        el_hand.el_box.h = h->palm.height;
+        el_hand.el_box.score = (uint8_t)(h->palm.score * 100);
+        el_hand.el_box.target = 0;
+
+        // Copy 21 landmarks (el_point_t only has x, y, score, target)
+        for (int j = 0; j < HAND_LANDMARK_NUM; j++) {
+            el_hand.el_landmark[j].x = h->landmarks[j].x;
+            el_hand.el_landmark[j].y = h->landmarks[j].y;
+            el_hand.el_landmark[j].score = 100;  // Confidence
+            el_hand.el_landmark[j].target = 0;
+        }
+
+        el_hand.handedness = h->handedness;
+        el_hands.emplace_front(el_hand);
+    }
+
+    // Get JPEG info
+    uint32_t jpeg_addr, jpeg_sz;
+    cisdp_get_jpginfo(&jpeg_sz, &jpeg_addr);
+
+    // Create image info
+    el_img_t img_info;
+    img_info.data = (uint8_t*)jpeg_addr;
+    img_info.size = jpeg_sz;
+    img_info.width = img_w;
+    img_info.height = img_h;
+    img_info.format = EL_PIXEL_FORMAT_JPEG;
+    img_info.rotate = EL_PIXEL_ROTATE_0;
+
+    // Send JSON result
+    send_device_id();
+    event_reply(concat_strings(", ",
+        hands_results_2_json_str(el_hands), ", ",
+        img_2_json_str(&img_info)));
 
     return 0;
 }

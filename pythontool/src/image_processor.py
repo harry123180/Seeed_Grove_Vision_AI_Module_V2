@@ -19,7 +19,7 @@ from typing import Optional, Callable, Dict, Any, Tuple
 from dataclasses import dataclass
 from PIL import Image, ImageDraw
 
-from .drawing import draw_boxes, draw_keypoints, draw_face_mesh
+from .drawing import draw_boxes, draw_keypoints, draw_face_mesh, draw_hands
 
 
 @dataclass
@@ -31,6 +31,7 @@ class ProcessedFrame:
     processing_time: float  # 處理耗時 (ms)
     fm_count: int  # Face Mesh 點數
     box_count: int  # 檢測框數
+    hands_count: int = 0  # Hand tracking 數量
 
 
 class ImageProcessor(threading.Thread):
@@ -139,6 +140,7 @@ class ImageProcessor(threading.Thread):
             boxes = payload.get("boxes", [])
             keypoints = payload.get("keypoints", [])
             fm_points = payload.get("fm_points", [])
+            hands = payload.get("hands", [])
 
             # === 階段 1：Base64 + JPEG 解碼 ===
             image_data = base64.b64decode(image_b64)
@@ -185,6 +187,7 @@ class ImageProcessor(threading.Thread):
             # === 階段 2：繪製疊加層 ===
             box_count = 0
             fm_count = 0
+            hands_count = 0
 
             if boxes and isinstance(boxes, list):
                 image = draw_boxes(image, boxes, ref_w, ref_h)
@@ -202,6 +205,23 @@ class ImageProcessor(threading.Thread):
                 )
                 fm_count = sum(len(face[1]) if len(face) > 1 and isinstance(face[1], list) else 0
                               for face in fm_points if isinstance(face, list))
+
+            if hands and isinstance(hands, list):
+                # Parse hand tracking data from firmware:
+                # [[[bbox], [lm0], [lm1],...[lm20]], handedness], ...]
+                # hand[0] = [[bbox], [lm0],...[lm20]] (22 elements)
+                # hand[1] = handedness (0=left, 1=right)
+                hands_data = []
+                for hand in hands:
+                    if isinstance(hand, list) and len(hand) >= 2:
+                        hand_points = hand[0]  # [[bbox], [lm0], [lm1],...[lm20]]
+                        if isinstance(hand_points, list) and len(hand_points) >= 2:
+                            bbox = hand_points[0] if len(hand_points) > 0 else []
+                            landmarks = hand_points[1:22]  # 21 landmarks
+                            hands_data.append([bbox, landmarks])
+                if hands_data:
+                    image = draw_hands(image, hands_data, ref_w, ref_h)
+                    hands_count = len(hands_data)
 
             # === 階段 3：縮放至目標尺寸 ===
             # 使用 BILINEAR 比 LANCZOS 快 3-5 倍
@@ -221,6 +241,7 @@ class ImageProcessor(threading.Thread):
                 processing_time=0,  # 稍後填入
                 fm_count=fm_count,
                 box_count=box_count,
+                hands_count=hands_count,
             )
 
         except Exception as e:

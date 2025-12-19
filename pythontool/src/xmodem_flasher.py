@@ -31,6 +31,7 @@ class XmodemFlasher:
     """XMODEM 燒錄器"""
 
     DEF_TIMEOUT = 60
+    # Grove Vision AI V2 bootloader 使用 921600 baud
     DEF_BAUDRATE = 921600
 
     def __init__(self):
@@ -56,17 +57,19 @@ class XmodemFlasher:
         self._update_progress(msg)
 
     def connect(self, port: str, baudrate: int = DEF_BAUDRATE, timeout: int = DEF_TIMEOUT) -> bool:
-        """連接串口"""
+        """連接串口 - 完全匹配原始 xmodem_send.py 的設定"""
         try:
             self._log(f"正在連接 {port} @ {baudrate}...")
-            self.serial = serial.Serial(
-                port=port,
-                baudrate=baudrate,
-                bytesize=serial.EIGHTBITS,
-                parity=serial.PARITY_NONE,
-                stopbits=serial.STOPBITS_ONE,
-                timeout=timeout
-            )
+            self.serial = serial.Serial()
+            self.serial.port = port
+            self.serial.baudrate = baudrate
+            self.serial.bytesize = serial.EIGHTBITS
+            self.serial.parity = serial.PARITY_NONE
+            self.serial.stopbits = serial.STOPBITS_ONE
+            self.serial.timeout = timeout
+            self.serial.xonxoff = False  # 禁用軟體流控
+            self.serial.rtscts = False   # 禁用硬體流控
+            self.serial.open()
             self.serial.flushInput()
             self.serial.flushOutput()
             self._log(f"串口連接成功: {port}")
@@ -93,13 +96,29 @@ class XmodemFlasher:
         if self.serial:
             self.serial.write(bytes(command + "\r", encoding='ascii'))
 
-    def _getc(self, size, timeout=1):
-        """XMODEM getc"""
-        return self.serial.read(size) if self.serial else None
+    def _getc(self, size, timeout=60):
+        """XMODEM getc - 讀取資料
 
-    def _putc(self, data, timeout=1):
-        """XMODEM putc"""
-        return self.serial.write(data) if self.serial else None
+        重要：完全匹配原始 xmodem_send.py 的行為
+        """
+        if not self.serial:
+            return None
+        # 直接返回，不做任何轉換（與原始腳本一致）
+        return self.serial.read(size)
+
+    def _putc(self, data, timeout=3):
+        """XMODEM putc - 發送資料"""
+        if not self.serial:
+            return None
+        try:
+            result = self.serial.write(data)
+            # 高速傳輸時加入微小延遲，讓設備有時間處理
+            # 特別是在 921600 baud 時，Flash 寫入需要額外時間
+            time.sleep(0.001)  # 1ms delay
+            return result
+        except Exception as e:
+            print(f"[XMODEM putc error] {e}")
+            return None
 
     def _xmodem_callback(self, total_packets, success_count, error_count):
         """XMODEM 進度回調"""
@@ -121,9 +140,11 @@ class XmodemFlasher:
     def wait_for_bootloader(self, timeout: int = 60) -> bool:
         """等待 Bootloader 就緒 - 持續發送按鍵以捕捉 bootloader"""
         self.progress.status = "waiting"
+        self.progress.current_file = "等待 Bootloader..."
         self._log("=" * 40)
-        self._log("請按下開發板的 RESET 按鈕!")
-        self._log("(程式會持續發送按鍵以捕捉 bootloader)")
+        self._log(">>> 請立即按下開發板的 RESET 按鈕! <<<")
+        self._log("程式會持續發送按鍵以捕捉 bootloader")
+        self._log(f"超時時間: {timeout} 秒")
         self._log("=" * 40)
 
         # 設置較短的 timeout
@@ -137,12 +158,20 @@ class XmodemFlasher:
 
         start_time = time.time()
         bootloader_detected = False
+        last_countdown = timeout
 
         while time.time() - start_time < timeout:
             if self._stop_flag:
                 self._stop_sending = True
                 self._log("使用者取消")
                 return False
+
+            # 每 10 秒顯示一次倒數
+            elapsed = int(time.time() - start_time)
+            remaining = timeout - elapsed
+            if remaining != last_countdown and remaining % 10 == 0 and remaining > 0:
+                last_countdown = remaining
+                self._log(f"等待中... 剩餘 {remaining} 秒")
 
             try:
                 # 讀取串口數據
@@ -213,12 +242,13 @@ class XmodemFlasher:
         self.progress.sent_packets = 0
 
         self._log(f"開始燒錄韌體: {self.progress.current_file}")
-        self._log(f"檔案大小: {file_size} bytes, 封包數: {self.progress.total_packets}")
+        self._log(f"檔案大小: {file_size} bytes ({file_size / 1024:.1f} KB)")
 
+        # 使用 connect 時設定的 60 秒 timeout（不要覆蓋）
         modem = xmodem.XMODEM(getc=self._getc, putc=self._putc, mode=protocol)
 
         with open(firmware_path, 'rb') as f:
-            result = modem.send(f, callback=self._xmodem_callback)
+            result = modem.send(f, callback=self._xmodem_callback, retry=32)
 
         if result:
             self._log("韌體燒錄成功!")
@@ -228,7 +258,12 @@ class XmodemFlasher:
         return result
 
     def flash_model(self, model_path: str, flash_addr: int, offset: int = 0, protocol: str = 'xmodem') -> bool:
-        """燒錄模型"""
+        """燒錄模型
+
+        Preamble 固定使用 xmodem (128 bytes) 以確保相容性
+        Model 預設使用 xmodem (128 bytes) 以避免大檔案傳輸時的時序問題
+        如需加速可嘗試 xmodem1k (1024 bytes)，但可能在 >1MB 處失敗
+        """
         if not xmodem:
             self._log("錯誤: 缺少 xmodem 模組")
             self.progress.status = "error"
@@ -239,12 +274,12 @@ class XmodemFlasher:
             self.progress.status = "error"
             return False
 
-        packet_size = 128 if protocol == 'xmodem' else 1024
-        modem = xmodem.XMODEM(getc=self._getc, putc=self._putc, mode=protocol)
+        # Preamble 固定使用 xmodem (128 bytes) 格式
+        preamble_modem = xmodem.XMODEM(getc=self._getc, putc=self._putc, mode='xmodem')
 
-        # 建立 preamble
+        # 建立 128-byte preamble
         self._log(f"準備模型: {os.path.basename(model_path)} @ 0x{flash_addr:X}")
-        preamble = self._create_preamble(flash_addr, offset, packet_size)
+        preamble = self._create_preamble(flash_addr, offset, 128)
 
         # 發送 preamble
         self.progress.current_file = f"Preamble"
@@ -253,8 +288,8 @@ class XmodemFlasher:
 
         import io
         preamble_stream = io.BytesIO(preamble)
-        self._log("發送 Preamble...")
-        if not modem.send(preamble_stream, callback=self._xmodem_callback):
+        self._log("發送 Preamble (xmodem 128B)...")
+        if not preamble_modem.send(preamble_stream, callback=self._xmodem_callback, retry=16):
             self._log("Preamble 發送失敗!")
             return False
         self._log("Preamble 發送成功")
@@ -267,17 +302,26 @@ class XmodemFlasher:
         if self.serial:
             self.serial.flushInput()
 
-        # 發送模型
+        # 發送模型 - 使用指定的 protocol (預設 xmodem1k)
+        model_packet_size = 128 if protocol == 'xmodem' else 1024
+        model_modem = xmodem.XMODEM(getc=self._getc, putc=self._putc, mode=protocol)
+
         file_size = os.path.getsize(model_path)
         self.progress.current_file = os.path.basename(model_path)
-        self.progress.total_packets = math.ceil(file_size / packet_size)
+        self.progress.total_packets = math.ceil(file_size / model_packet_size)
         self.progress.sent_packets = 0
 
-        self._log(f"開始燒錄模型: {self.progress.current_file}")
-        self._log(f"檔案大小: {file_size} bytes")
+        self._log(f"開始燒錄模型: {self.progress.current_file} ({protocol})")
+        self._log(f"檔案大小: {file_size} bytes ({file_size / (1024*1024):.2f} MB)")
+
+        # 等待設備準備好
+        time.sleep(0.5)
+        if self.serial:
+            self.serial.flushInput()
+            self.serial.flushOutput()
 
         with open(model_path, 'rb') as f:
-            result = modem.send(f, callback=self._xmodem_callback)
+            result = model_modem.send(f, callback=self._xmodem_callback, retry=32)
 
         if result:
             self._log(f"模型燒錄成功: {os.path.basename(model_path)}")
@@ -332,12 +376,22 @@ class XmodemFlasher:
 
     def flash_all(self, firmware_path: Optional[str], models: List[tuple],
                   protocol: str = 'xmodem') -> bool:
-        """燒錄韌體和所有模型"""
+        """燒錄韌體和所有模型
+
+        Args:
+            protocol: 'xmodem' (128 bytes) 或 'xmodem1k' (1024 bytes)
+                      預設使用 xmodem 以確保大檔案(>1MB)傳輸穩定性
+        """
         self._stop_flag = False
-        self._log("開始燒錄流程...")
+        self._log(f"開始燒錄流程... (使用 {protocol} 協議)")
 
         # 等待 Bootloader
         if not self.wait_for_bootloader():
+            self.progress.status = "error"
+            self._log("錯誤: 等待 Bootloader 超時")
+            self._log("請確認:")
+            self._log("1. 裝置已連接到正確的 COM port")
+            self._log("2. 按下 RESET 按鈕進入 bootloader")
             return False
 
         # 燒錄韌體
