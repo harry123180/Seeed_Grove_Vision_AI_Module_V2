@@ -153,7 +153,7 @@ CUSTOMER ?= seeed
 # tflm_yolo11_od
 # tflm_yolov8_gender_cls
 ##
-APP_TYPE = tflm_fd_fm
+APP_TYPE = tflm_hand_tracking
  
 ### Options above must be added before include options.mk ###
 override EPII_ROOT := $(strip $(subst \,/,$(EPII_ROOT)))

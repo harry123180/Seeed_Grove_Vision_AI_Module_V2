@@ -16,9 +16,10 @@
 
 /* ============================================
  * Input Tensor Dimensions
+ * (Both models use 256x256 input from PINTO)
  * ============================================ */
-#define PALM_DET_INPUT_WIDTH        128
-#define PALM_DET_INPUT_HEIGHT       128
+#define PALM_DET_INPUT_WIDTH        256
+#define PALM_DET_INPUT_HEIGHT       256
 
 #define HAND_LM_INPUT_WIDTH         256
 #define HAND_LM_INPUT_HEIGHT        256

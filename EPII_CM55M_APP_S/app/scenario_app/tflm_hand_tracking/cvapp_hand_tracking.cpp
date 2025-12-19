@@ -78,7 +78,6 @@ TfLiteTensor *palm_output_scores = nullptr;
 tflite::MicroInterpreter *hand_int_ptr = nullptr;
 TfLiteTensor *hand_input = nullptr;
 TfLiteTensor *hand_output_landmarks = nullptr;
-TfLiteTensor *hand_output_handedness = nullptr;
 
 /* ============================================
  * Op Resolver

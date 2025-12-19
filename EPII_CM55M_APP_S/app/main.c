@@ -127,6 +127,19 @@ int main(void)
 #endif
 
 
+#ifdef TFLM_HAND_TRACKING
+#include "tflm_hand_tracking.h"
+
+/** main entry */
+int main(void)
+{
+	board_init();
+	app_main();
+	return 0;
+}
+#endif
+
+
 #ifdef FATFS_TEST
 #include "fatfs_test.h"
 
