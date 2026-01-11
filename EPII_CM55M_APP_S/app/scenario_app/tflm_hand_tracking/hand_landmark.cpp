@@ -90,18 +90,25 @@ void hand_landmark_postprocess(
         return;
     }
 
-    // Get quantization parameters
-    float scale = landmarks_tensor->params.scale;
-    int zero_point = landmarks_tensor->params.zero_point;
-    int8_t* data = landmarks_tensor->data.int8;
+    // Check tensor type - vela models output FLOAT after DEQUANTIZE ops
+    bool is_float = (landmarks_tensor->type == kTfLiteFloat32);
+
+    // Get quantization parameters (only valid for INT8)
+    float scale = is_float ? 1.0f : landmarks_tensor->params.scale;
+    int zero_point = is_float ? 0 : landmarks_tensor->params.zero_point;
+
+    // Get data pointer based on type
+    float* data_float = is_float ? landmarks_tensor->data.f : nullptr;
+    int8_t* data_int8 = is_float ? nullptr : landmarks_tensor->data.int8;
 
     // Get tensor shape
-    int total_elements = landmarks_tensor->bytes;
-    int num_coords = total_elements;  // For INT8: 1 byte per value
+    int total_bytes = landmarks_tensor->bytes;
+    // For FLOAT: 4 bytes per value, for INT8: 1 byte per value
+    int num_coords = is_float ? (total_bytes / 4) : total_bytes;
 
     #ifdef HAND_LANDMARK_DEBUG
-    xprintf("[Hand LM] Tensor bytes=%d, scale=%.6f, zp=%d\n",
-            total_elements, scale, zero_point);
+    xprintf("[Hand LM] type=%s, bytes=%d, coords=%d\n",
+            is_float ? "FLOAT" : "INT8", total_bytes, num_coords);
     #endif
 
     // MediaPipe hand landmark output: 21 points * 3 coords (x, y, z) = 63 values
@@ -118,10 +125,17 @@ void hand_landmark_postprocess(
             continue;
         }
 
-        // Dequantize
-        float x = dequantize(data[offset + 0], scale, zero_point);
-        float y = dequantize(data[offset + 1], scale, zero_point);
-        float z = dequantize(data[offset + 2], scale, zero_point);
+        // Get landmark values - handle both FLOAT and INT8
+        float x, y, z;
+        if (is_float) {
+            x = data_float[offset + 0];
+            y = data_float[offset + 1];
+            z = data_float[offset + 2];
+        } else {
+            x = dequantize(data_int8[offset + 0], scale, zero_point);
+            y = dequantize(data_int8[offset + 1], scale, zero_point);
+            z = dequantize(data_int8[offset + 2], scale, zero_point);
+        }
 
         // Transform to image coordinates
         transform_landmark(x, y, z, palm_bbox, img_w, img_h, &output_landmarks[i]);

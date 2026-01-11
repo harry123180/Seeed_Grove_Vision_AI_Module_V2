@@ -15,13 +15,71 @@
 
 /* ============================================
  * Anchor Configuration for Palm Detection
- * Based on MediaPipe SSD anchors
+ * PINTO palm_detection model: 256x256 input, 2944 anchors
  * ============================================ */
 
-// Simplified anchor generation for 128x128 input
-// Real implementation should match MediaPipe's anchor generation
-#define NUM_ANCHORS     896     // Typical for 128x128 input
-#define ANCHOR_OFFSET   0.5f
+// Anchor structure
+struct Anchor {
+    float x_center;
+    float y_center;
+};
+
+// Anchor configuration for 256x256 input (PINTO model)
+// Total anchors: 32*32*2 + 16*16*2 + 8*8*6 = 2048 + 512 + 384 = 2944
+#define NUM_ANCHORS_TOTAL   2944
+#define INPUT_SIZE          256.0f
+
+// Layer configuration for 256x256 input with 2944 anchors
+struct AnchorLayerConfig {
+    int stride;
+    int num_anchors;
+};
+
+static const AnchorLayerConfig anchor_layers[] = {
+    {8, 2},    // 32x32 grid (256/8=32), 2 anchors per cell = 2048
+    {16, 2},   // 16x16 grid (256/16=16), 2 anchors per cell = 512
+    {32, 6},   // 8x8 grid (256/32=8), 6 anchors per cell = 384
+};
+#define NUM_LAYERS 3
+
+// Pre-computed anchors (generated once at startup)
+static Anchor anchors[NUM_ANCHORS_TOTAL];
+static bool anchors_initialized = false;
+
+/* ============================================
+ * Anchor Generation
+ * ============================================ */
+static void generate_anchors() {
+    if (anchors_initialized) return;
+
+    int anchor_idx = 0;
+
+    for (int layer = 0; layer < NUM_LAYERS; layer++) {
+        int stride = anchor_layers[layer].stride;
+        int num_anchors_per_cell = anchor_layers[layer].num_anchors;
+        int grid_size = (int)(INPUT_SIZE / stride);
+
+        for (int y = 0; y < grid_size; y++) {
+            for (int x = 0; x < grid_size; x++) {
+                // Anchor center is at the center of each grid cell
+                float x_center = (x + 0.5f) / grid_size;
+                float y_center = (y + 0.5f) / grid_size;
+
+                // Add multiple anchors at same location
+                for (int a = 0; a < num_anchors_per_cell; a++) {
+                    if (anchor_idx < NUM_ANCHORS_TOTAL) {
+                        anchors[anchor_idx].x_center = x_center;
+                        anchors[anchor_idx].y_center = y_center;
+                        anchor_idx++;
+                    }
+                }
+            }
+        }
+    }
+
+    anchors_initialized = true;
+    xprintf("[Palm] Generated %d anchors\n", anchor_idx);
+}
 
 /* ============================================
  * Dequantization Helper
@@ -131,23 +189,69 @@ int palm_detection_postprocess(
         return 0;
     }
 
-    // Get quantization parameters
-    float boxes_scale = boxes_tensor->params.scale;
-    int boxes_zp = boxes_tensor->params.zero_point;
-    float scores_scale = scores_tensor->params.scale;
-    int scores_zp = scores_tensor->params.zero_point;
+    // Generate anchors on first call
+    generate_anchors();
 
-    int8_t* boxes_data = boxes_tensor->data.int8;
-    int8_t* scores_data = scores_tensor->data.int8;
+    // Check tensor types - vela models output FLOAT after DEQUANTIZE ops
+    bool boxes_is_float = (boxes_tensor->type == kTfLiteFloat32);
+    bool scores_is_float = (scores_tensor->type == kTfLiteFloat32);
+
+    // Get quantization parameters (only valid for INT8)
+    float boxes_scale = boxes_is_float ? 1.0f : boxes_tensor->params.scale;
+    int boxes_zp = boxes_is_float ? 0 : boxes_tensor->params.zero_point;
+    float scores_scale = scores_is_float ? 1.0f : scores_tensor->params.scale;
+    int scores_zp = scores_is_float ? 0 : scores_tensor->params.zero_point;
+
+    // Get data pointers based on type
+    float* boxes_float = boxes_is_float ? boxes_tensor->data.f : nullptr;
+    int8_t* boxes_int8 = boxes_is_float ? nullptr : boxes_tensor->data.int8;
+    float* scores_float = scores_is_float ? scores_tensor->data.f : nullptr;
+    int8_t* scores_int8 = scores_is_float ? nullptr : scores_tensor->data.int8;
 
     // Get tensor dimensions
     int num_anchors = boxes_tensor->dims->data[1];
     int box_size = boxes_tensor->dims->data[2];  // Usually 18 (4 + 7*2)
 
     #ifdef PALM_DETECTION_DEBUG
-    xprintf("[Palm] num_anchors=%d, box_size=%d\n", num_anchors, box_size);
-    xprintf("[Palm] boxes: scale=%.6f, zp=%d\n", boxes_scale, boxes_zp);
-    xprintf("[Palm] scores: scale=%.6f, zp=%d\n", scores_scale, scores_zp);
+    static int debug_frame_count = 0;
+    debug_frame_count++;
+
+    // Print raw tensor data for comparison with PC
+    xprintf("\n[RAW_TENSOR] Frame %d\n", debug_frame_count);
+    xprintf("[RAW_TENSOR] boxes_type=%s scores_type=%s\n",
+            boxes_is_float ? "F32" : "I8",
+            scores_is_float ? "F32" : "I8");
+    xprintf("[RAW_TENSOR] num_anchors=%d box_size=%d\n", num_anchors, box_size);
+
+    // Find and print max score directly (simpler approach)
+    float max_score = -999.0f;
+    int max_idx = -1;
+    for (int i = 0; i < num_anchors; i++) {
+        float s = scores_is_float ? scores_float[i] : dequantize(scores_int8[i], scores_scale, scores_zp);
+        float sig_s = sigmoid(s);
+        if (sig_s > max_score) {
+            max_score = sig_s;
+            max_idx = i;
+        }
+    }
+
+    xprintf("[RAW_TENSOR] max_score=%d%% at idx=%d\n", (int)(max_score * 100), max_idx);
+
+    // Print raw values for max score anchor
+    if (max_idx >= 0 && max_idx < num_anchors) {
+        int box_off = max_idx * box_size;
+        float dx = boxes_is_float ? boxes_float[box_off + 0] : dequantize(boxes_int8[box_off + 0], boxes_scale, boxes_zp);
+        float dy = boxes_is_float ? boxes_float[box_off + 1] : dequantize(boxes_int8[box_off + 1], boxes_scale, boxes_zp);
+        float dw = boxes_is_float ? boxes_float[box_off + 2] : dequantize(boxes_int8[box_off + 2], boxes_scale, boxes_zp);
+        float dh = boxes_is_float ? boxes_float[box_off + 3] : dequantize(boxes_int8[box_off + 3], boxes_scale, boxes_zp);
+
+        int anc_x_pct = (int)(anchors[max_idx].x_center * 100);
+        int anc_y_pct = (int)(anchors[max_idx].y_center * 100);
+
+        xprintf("[RAW_TENSOR] best: idx=%d anc=[%d,%d] raw=[%d,%d,%d,%d]\n",
+                max_idx, anc_x_pct, anc_y_pct,
+                (int)dx, (int)dy, (int)dw, (int)dh);
+    }
     #endif
 
     // Temporary storage for detections before NMS
@@ -160,37 +264,66 @@ int palm_detection_postprocess(
 
     // Process each anchor
     for (int i = 0; i < num_anchors && num_detections < 32; i++) {
-        // Get score
-        float score = dequantize(scores_data[i], scores_scale, scores_zp);
+        // Get score - handle both FLOAT and INT8
+        float score;
+        if (scores_is_float) {
+            score = scores_float[i];
+        } else {
+            score = dequantize(scores_int8[i], scores_scale, scores_zp);
+        }
         score = sigmoid(score);
 
         if (score < score_threshold) {
             continue;
         }
 
-        // Decode bounding box
-        // Box format: [cx, cy, w, h, kp0_x, kp0_y, kp1_x, kp1_y, ...]
+
+        // Decode bounding box using anchor
+        // Model output format: [dx, dy, dw, dh, ...keypoints...]
+        // dx, dy are offsets from anchor center (in input image pixels)
+        // dw, dh are width/height (in input image pixels)
         int box_offset = i * box_size;
 
-        float cx = dequantize(boxes_data[box_offset + 0], boxes_scale, boxes_zp);
-        float cy = dequantize(boxes_data[box_offset + 1], boxes_scale, boxes_zp);
-        float w = dequantize(boxes_data[box_offset + 2], boxes_scale, boxes_zp);
-        float h = dequantize(boxes_data[box_offset + 3], boxes_scale, boxes_zp);
+        float dx, dy, dw, dh;
+        if (boxes_is_float) {
+            dx = boxes_float[box_offset + 0];
+            dy = boxes_float[box_offset + 1];
+            dw = boxes_float[box_offset + 2];
+            dh = boxes_float[box_offset + 3];
+        } else {
+            dx = dequantize(boxes_int8[box_offset + 0], boxes_scale, boxes_zp);
+            dy = dequantize(boxes_int8[box_offset + 1], boxes_scale, boxes_zp);
+            dw = dequantize(boxes_int8[box_offset + 2], boxes_scale, boxes_zp);
+            dh = dequantize(boxes_int8[box_offset + 3], boxes_scale, boxes_zp);
+        }
 
-        // TODO: Add anchor offset based on MediaPipe anchor generation
-        // For now, assume coordinates are in [0, 1] normalized format
+        // MediaPipe palm detection decoding
+        // Vela compiler scales dimensions differently than offsets
+        // - Position offsets (dx, dy): NO scale needed
+        // - Box dimensions (dw, dh): NEED VELA_SCALE
+        const float VELA_SCALE = 10.0f;
 
-        // Convert to pixel coordinates
-        float x = (cx - w / 2.0f) * PALM_DET_INPUT_WIDTH * scale_x;
-        float y = (cy - h / 2.0f) * PALM_DET_INPUT_HEIGHT * scale_y;
-        float width = w * PALM_DET_INPUT_WIDTH * scale_x;
-        float height = h * PALM_DET_INPUT_HEIGHT * scale_y;
+        // Position: anchor + offset (dx/dy swapped based on PC testing)
+        float cx = anchors[i].x_center + dy / INPUT_SIZE;  // Use dy for x (swapped)
+        float cy = anchors[i].y_center + dx / INPUT_SIZE;  // Use dx for y (swapped)
+
+        // Box dimensions: need VELA_SCALE for Vela-compiled model
+        float w = (dw / INPUT_SIZE) * VELA_SCALE;
+        float h = (dh / INPUT_SIZE) * VELA_SCALE;
+
+        // Convert from center format to corner format and scale to image size
+        float x = (cx - w / 2.0f) * img_w;
+        float y = (cy - h / 2.0f) * img_h;
+        float width = w * img_w;
+        float height = h * img_h;
 
         // Clamp to image bounds
         x = std::max(0.0f, std::min(x, (float)img_w));
         y = std::max(0.0f, std::min(y, (float)img_h));
-        width = std::min(width, (float)img_w - x);
-        height = std::min(height, (float)img_h - y);
+        width = std::max(1.0f, std::min(width, (float)img_w - x));
+        height = std::max(1.0f, std::min(height, (float)img_h - y));
+
+        // Debug output moved to top5 section above
 
         // Store detection
         temp_detections[num_detections].x = (int16_t)x;
@@ -203,15 +336,12 @@ int palm_detection_postprocess(
         num_detections++;
     }
 
-    #ifdef PALM_DETECTION_DEBUG
-    xprintf("[Palm] Pre-NMS detections: %d\n", num_detections);
-    #endif
-
     // Apply NMS
+    int pre_nms_count = num_detections;
     num_detections = apply_nms(temp_detections, num_detections, nms_threshold);
 
     #ifdef PALM_DETECTION_DEBUG
-    xprintf("[Palm] Post-NMS detections: %d\n", num_detections);
+    xprintf("[RAW_TENSOR] pre_nms=%d post_nms=%d\n", pre_nms_count, num_detections);
     #endif
 
     // Copy to output

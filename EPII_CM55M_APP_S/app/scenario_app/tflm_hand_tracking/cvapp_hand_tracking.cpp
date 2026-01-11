@@ -20,6 +20,7 @@
 #include "board.h"
 #include "cvapp_hand_tracking.h"
 #include "cisdp_sensor.h"
+#include "sensor_dp_lib.h"
 #include "WE2_core.h"
 
 #include "ethosu_driver.h"
@@ -57,8 +58,7 @@ constexpr int tensor_arena_tail_size = TENSOR_ARENA_TAIL_SIZE;
 
 // Memory buffers
 static uint32_t tensor_arena = 0;
-static uint32_t palm_crop_buffer = 0;
-static uint32_t hand_crop_buffer = 0;
+static uint32_t hand_crop_buffer = 0;  // Removed palm_crop_buffer (not used)
 
 /* ============================================
  * NPU Driver
@@ -134,44 +134,53 @@ static int _arm_npu_init(bool security_enable, bool privilege_enable) {
 
 /**
  * @brief Preprocess image for Palm Detection
- * Resize and normalize to INT8 range
+ * Resize RGB planar image and convert to RGB interleaved
+ * Normalize to INT8 range [-128, 127]
  */
 static void preprocess_for_palm_detection(
     uint8_t* src_image,
     int8_t* dst_tensor,
     uint32_t src_w,
-    uint32_t src_h
+    uint32_t src_h,
+    uint32_t src_ch
 ) {
     float w_scale = (float)(src_w - 1) / (PALM_DET_INPUT_WIDTH - 1);
     float h_scale = (float)(src_h - 1) / (PALM_DET_INPUT_HEIGHT - 1);
 
-    // Resize using Helium acceleration
-    hx_lib_image_resize_helium(
+    // Resize and convert BGR planar to RGB interleaved (same as YOLO)
+    // Output is uint8 RGB interleaved format
+    hx_lib_image_resize_BGR8U3C_to_RGB24_helium(
         src_image,
-        (uint8_t*)dst_tensor,
-        src_w, src_h, 1,  // Grayscale
+        (uint8_t*)dst_tensor,  // Temporarily store as uint8
+        src_w, src_h, src_ch,
         PALM_DET_INPUT_WIDTH,
         PALM_DET_INPUT_HEIGHT,
         w_scale, h_scale
     );
 
-    // Normalize: [0, 255] -> [-128, 127]
-    int total_pixels = PALM_DET_INPUT_WIDTH * PALM_DET_INPUT_HEIGHT;
-    for (int i = 0; i < total_pixels; ++i) {
-        dst_tensor[i] = dst_tensor[i] - 128;
+    // Convert uint8 [0-255] to int8 [-128, 127]
+    int total_bytes = PALM_DET_INPUT_WIDTH * PALM_DET_INPUT_HEIGHT * 3;
+    uint8_t* src_ptr = (uint8_t*)dst_tensor;
+    for (int i = 0; i < total_bytes; ++i) {
+        dst_tensor[i] = (int8_t)(src_ptr[i] - 128);
     }
 }
 
 /**
  * @brief Crop and resize palm region for Hand Landmark
+ * Crops RGB planar image and converts to RGB interleaved
  */
 static void crop_and_resize_palm(
     uint8_t* src_image,
     uint32_t src_w,
     uint32_t src_h,
+    uint32_t src_ch,
     palm_bbox_t* palm,
     int8_t* dst_tensor
 ) {
+    // Use hand_crop_buffer as temporary storage for cropped RGB planes
+    uint8_t* temp_crop = (uint8_t*)hand_crop_buffer;
+
     // Calculate crop region with padding
     float scale_factor = 2.0f;  // Expand bbox for better landmark detection
     int cx = palm->x + palm->width / 2;
@@ -192,23 +201,47 @@ static void crop_and_resize_palm(
     int crop_w = x2 - x1;
     int crop_h = y2 - y1;
 
-    // Resize cropped region to Hand Landmark input size
+    // Limit crop size to buffer capacity (256x256)
+    if (crop_w > HAND_LM_INPUT_WIDTH) crop_w = HAND_LM_INPUT_WIDTH;
+    if (crop_h > HAND_LM_INPUT_HEIGHT) crop_h = HAND_LM_INPUT_HEIGHT;
+
+    if (crop_w <= 0 || crop_h <= 0) {
+        // Invalid crop region, fill with zeros
+        memset(dst_tensor, -128, HAND_LM_INPUT_WIDTH * HAND_LM_INPUT_HEIGHT * 3);
+        return;
+    }
+
+    // RGB planar format: R plane at offset 0, G at W*H, B at 2*W*H
+    uint32_t plane_size = src_w * src_h;
+
+    // Copy cropped region for each plane to temp buffer (also in planar format)
+    for (int ch = 0; ch < 3; ch++) {
+        uint8_t* src_plane = src_image + ch * plane_size;
+        uint8_t* dst_plane = temp_crop + ch * crop_w * crop_h;
+        for (int y = 0; y < crop_h; y++) {
+            memcpy(dst_plane + y * crop_w,
+                   src_plane + (y1 + y) * src_w + x1,
+                   crop_w);
+        }
+    }
+
+    // Resize and convert to RGB interleaved
     float w_scale = (float)(crop_w - 1) / (HAND_LM_INPUT_WIDTH - 1);
     float h_scale = (float)(crop_h - 1) / (HAND_LM_INPUT_HEIGHT - 1);
 
-    hx_lib_image_resize_helium(
-        src_image + y1 * src_w + x1,
+    hx_lib_image_resize_BGR8U3C_to_RGB24_helium(
+        temp_crop,
         (uint8_t*)dst_tensor,
-        crop_w, crop_h, 1,
+        crop_w, crop_h, 3,
         HAND_LM_INPUT_WIDTH,
         HAND_LM_INPUT_HEIGHT,
         w_scale, h_scale
     );
 
-    // Normalize
-    int total_pixels = HAND_LM_INPUT_WIDTH * HAND_LM_INPUT_HEIGHT;
-    for (int i = 0; i < total_pixels; ++i) {
-        dst_tensor[i] = dst_tensor[i] - 128;
+    // Convert uint8 [0-255] to int8 [-128, 127]
+    int total_bytes = HAND_LM_INPUT_WIDTH * HAND_LM_INPUT_HEIGHT * 3;
+    for (int i = 0; i < total_bytes; ++i) {
+        dst_tensor[i] = ((int8_t*)dst_tensor)[i] - 128;
     }
 }
 
@@ -228,16 +261,17 @@ int cv_hand_tracking_init(
 
     /* ---- Memory Allocation ---- */
     tensor_arena = mm_reserve_align(tensor_arena_size, 0x20);
-    palm_crop_buffer = mm_reserve_align(PALM_DET_INPUT_WIDTH * PALM_DET_INPUT_HEIGHT, 0x20);
-    hand_crop_buffer = mm_reserve_align(HAND_LM_INPUT_WIDTH * HAND_LM_INPUT_HEIGHT, 0x20);
+    // hand_crop_buffer needs to store cropped region for hand landmark
+    // Max size: 256x256x3 = 196KB (same as hand landmark input)
+    hand_crop_buffer = mm_reserve_align(HAND_LM_INPUT_WIDTH * HAND_LM_INPUT_HEIGHT * 3, 0x20);
 
-    if (tensor_arena == 0 || palm_crop_buffer == 0 || hand_crop_buffer == 0) {
+    if (tensor_arena == 0 || hand_crop_buffer == 0) {
         xprintf("[Hand Tracking] Memory allocation failed\n");
         return -1;
     }
 
-    xprintf("[Hand Tracking] Memory allocated: arena=%x, palm=%x, hand=%x\n",
-            tensor_arena, palm_crop_buffer, hand_crop_buffer);
+    xprintf("[Hand Tracking] Memory allocated: arena=%x, hand_crop=%x\n",
+            tensor_arena, hand_crop_buffer);
 
     /* ---- NPU Initialization ---- */
     if (_arm_npu_init(security_enable, privilege_enable) != 0) {
@@ -245,6 +279,18 @@ int cv_hand_tracking_init(
     }
 
     /* ---- Load Models ---- */
+    // Debug: dump first 32 bytes at flash addresses to verify model data
+    xprintf("[Hand Tracking] Flash debug:\n");
+    xprintf("  Palm addr: 0x%08X\n", palm_model_addr);
+    xprintf("  Hand addr: 0x%08X\n", hand_model_addr);
+    uint8_t* palm_bytes = (uint8_t*)palm_model_addr;
+    uint8_t* hand_bytes = (uint8_t*)hand_model_addr;
+    xprintf("  Palm data: ");
+    for (int i = 0; i < 16; i++) xprintf("%02X ", palm_bytes[i]);
+    xprintf("\n  Hand data: ");
+    for (int i = 0; i < 16; i++) xprintf("%02X ", hand_bytes[i]);
+    xprintf("\n");
+
     static const tflite::Model* palm_model = tflite::GetModel((const void*)palm_model_addr);
     static const tflite::Model* hand_model = tflite::GetModel((const void*)hand_model_addr);
 
@@ -311,8 +357,19 @@ int cv_hand_tracking_init(
     /* ---- Get Tensor Pointers ---- */
     palm_int_ptr = &palm_interpreter;
     palm_input = palm_interpreter.input(0);
-    palm_output_boxes = palm_interpreter.output(0);
-    palm_output_scores = palm_interpreter.output(1);
+    // Note: Output order depends on model - check dims to determine which is which
+    // scores: [1, num_anchors, 1], boxes: [1, num_anchors, 18]
+    TfLiteTensor* out0 = palm_interpreter.output(0);
+    TfLiteTensor* out1 = palm_interpreter.output(1);
+    if (out0->dims->data[2] == 1) {
+        // output0 is scores, output1 is boxes
+        palm_output_scores = out0;
+        palm_output_boxes = out1;
+    } else {
+        // output0 is boxes, output1 is scores
+        palm_output_boxes = out0;
+        palm_output_scores = out1;
+    }
 
     hand_int_ptr = &hand_interpreter;
     hand_input = hand_interpreter.input(0);
@@ -324,6 +381,19 @@ int cv_hand_tracking_init(
             palm_input->dims->data[1],
             palm_input->dims->data[2],
             palm_input->dims->data[3]);
+    xprintf("  Palm output count: %d\n", palm_interpreter.outputs_size());
+    xprintf("  Palm output0 (boxes): dims=%d [", palm_output_boxes->dims->size);
+    for (int i = 0; i < palm_output_boxes->dims->size; i++) {
+        xprintf("%d%s", palm_output_boxes->dims->data[i],
+                i < palm_output_boxes->dims->size - 1 ? "," : "");
+    }
+    xprintf("] scale=%.6f zp=%d\n", palm_output_boxes->params.scale, palm_output_boxes->params.zero_point);
+    xprintf("  Palm output1 (scores): dims=%d [", palm_output_scores->dims->size);
+    for (int i = 0; i < palm_output_scores->dims->size; i++) {
+        xprintf("%d%s", palm_output_scores->dims->data[i],
+                i < palm_output_scores->dims->size - 1 ? "," : "");
+    }
+    xprintf("] scale=%.6f zp=%d\n", palm_output_scores->params.scale, palm_output_scores->params.zero_point);
     xprintf("  Hand input: %dx%dx%d\n",
             hand_input->dims->data[1],
             hand_input->dims->data[2],
@@ -344,11 +414,12 @@ int cv_hand_tracking_run(struct_hand_algoResult *result) {
     uint32_t raw_addr = app_get_raw_addr();
     uint32_t img_w = app_get_raw_width();
     uint32_t img_h = app_get_raw_height();
+    uint32_t img_ch = app_get_raw_channels();
 
     #ifdef HAND_TRACKING_DEBUG
     if (frame_count % 30 == 1) {
-        xprintf("[Hand Tracking] Frame %d: %dx%d @ %x\n",
-                frame_count, img_w, img_h, raw_addr);
+        xprintf("[Hand Tracking] Frame %d: %dx%dx%d @ %x\n",
+                frame_count, img_w, img_h, img_ch, raw_addr);
     }
     #endif
 
@@ -356,7 +427,7 @@ int cv_hand_tracking_run(struct_hand_algoResult *result) {
     preprocess_for_palm_detection(
         (uint8_t*)raw_addr,
         palm_input->data.int8,
-        img_w, img_h
+        img_w, img_h, img_ch
     );
 
     invoke_status = palm_int_ptr->Invoke();
@@ -379,7 +450,8 @@ int cv_hand_tracking_run(struct_hand_algoResult *result) {
     result->num_hands = 0;
 
     if (num_palms == 0) {
-        // No hands detected
+        // No hands detected - still need to retrigger for next frame!
+        sensordplib_retrigger_capture();
         return 0;
     }
 
@@ -390,7 +462,7 @@ int cv_hand_tracking_run(struct_hand_algoResult *result) {
         // Crop and resize palm region
         crop_and_resize_palm(
             (uint8_t*)raw_addr,
-            img_w, img_h,
+            img_w, img_h, img_ch,
             palm,
             hand_input->data.int8
         );
@@ -474,6 +546,9 @@ int cv_hand_tracking_run(struct_hand_algoResult *result) {
     event_reply(concat_strings(", ",
         hands_results_2_json_str(el_hands), ", ",
         img_2_json_str(&img_info)));
+
+    // Retrigger capture for next frame
+    sensordplib_retrigger_capture();
 
     return 0;
 }

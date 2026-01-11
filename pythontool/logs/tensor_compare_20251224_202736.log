@@ -1,0 +1,68 @@
+Tensor Compare - 2025-12-24 20:27:37.531104
+============================================================
+
+[FW] [RAW_TENSOR] Frame 1
+[FW] [RAW_TENSOR] boxes_type=F32 scores_type=F32
+[FW] [RAW_TENSOR] num_anchors=2944 box_size=18
+[FW] [RAW_TENSOR] Top 5 scores:
+[FW] [RAW_TENSOR] pre_nms=10 post_nms=1
+[FW] [RAW_TENSOR] Frame 2
+[FW] [RAW_TENSOR] boxes_type=F32 scores_type=F32
+[FW] [RAW_TENSOR] num_anchors=2944 box_size=18
+[FW] [RAW_TENSOR] Top 5 scores:
+[FW] [RAW_TENSOR] pre_nms=0 post_nms=0
+[FW] [RAW_TENSOR] Frame 3
+[FW] [RAW_TENSOR] boxes_type=F32 scores_type=F32
+[FW] [RAW_TENSOR] num_anchors=2944 box_size=18
+[FW] [RAW_TENSOR] Top 5 scores:
+[FW] [RAW_TENSOR] pre_nms=32 post_nms=4
+[FW] [RAW_TENSOR] Frame 4
+[FW] [RAW_TENSOR] boxes_type=F32 scores_type=F32
+[FW] [RAW_TENSOR] num_anchors=2944 box_size=18
+[FW] [RAW_TENSOR] Top 5 scores:
+[FW] [RAW_TENSOR] pre_nms=0 post_nms=0
+[FW] [RAW_TENSOR] Frame 5
+[FW] [RAW_TENSOR] boxes_type=F32 scores_type=F32
+[FW] [RAW_TENSOR] num_anchors=2944 box_size=18
+[FW] [RAW_TENSOR] Top 5 scores:
+[FW] [RAW_TENSOR] pre_nms=32 post_nms=4
+[FW] [RAW_TENSOR] Frame 6
+[FW] [RAW_TENSOR] boxes_type=F32 scores_type=F32
+[FW] [RAW_TENSOR] num_anchors=2944 box_size=18
+[FW] [RAW_TENSOR] Top 5 scores:
+[FW] [RAW_TENSOR] pre_nms=1 post_nms=1
+[FW] [RAW_TENSOR] Frame 7
+[FW] [RAW_TENSOR] boxes_type=F32 scores_type=F32
+[FW] [RAW_TENSOR] num_anchors=2944 box_size=18
+[FW] [RAW_TENSOR] Top 5 scores:
+[FW] [RAW_TENSOR] pre_nms=0 post_nms=0
+[FW] [RAW_TENSOR] Frame 8
+[FW] [RAW_TENSOR] boxes_type=F32 scores_type=F32
+[FW] [RAW_TENSOR] num_anchors=2944 box_size=18
+[FW] [RAW_TENSOR] Top 5 scores:
+[FW] [RAW_TENSOR] pre_nms=32 post_nms=5
+[FW] [RAW_TENSOR] Frame 9
+[FW] [RAW_TENSOR] boxes_type=F32 scores_type=F32
+[FW] [RAW_TENSOR] num_anchors=2944 box_size=18
+[FW] [RAW_TENSOR] Top 5 scores:
+[FW] [RAW_TENSOR] pre_nms=5 post_nms=1
+[FW] [RAW_TENSOR] Frame 10
+[FW] [RAW_TENSOR] boxes_type=F32 scores_type=F32
+[FW] [RAW_TENSOR] num_anchors=2944 box_size=18
+[FW] [RAW_TENSOR] Top 5 scores:
+[FW] [RAW_TENSOR] pre_nms=0 post_nms=0
+[FW] [RAW_TENSOR] Frame 11
+[FW] [RAW_TENSOR] boxes_type=F32 scores_type=F32
+[FW] [RAW_TENSOR] num_anchors=2944 box_size=18
+[FW] [RAW_TENSOR] Top 5 scores:
+[FW] [RAW_TENSOR] pre_nms=32 post_nms=5
+[FW] [RAW_TENSOR] Frame 12
+[FW] [RAW_TENSOR] boxes_type=F32 scores_type=F32
+[FW] [RAW_TENSOR] num_anchors=2944 box_size=18
+[FW] [RAW_TENSOR] Top 5 scores:
+[FW] [RAW_TENSOR] pre_nms=0 post_nms=0
+[FW] [RAW_TENSOR] Frame 13
+[FW] [RAW_TENSOR] boxes_type=F32 scores_type=F32
+[FW] [RAW_TENSOR] num_anchors=2944 box_size=18
+[FW] [RAW_TENSOR] Top 5 scores:
+[FW] [RAW_TENSOR] pre_nms=32 post_nms=5

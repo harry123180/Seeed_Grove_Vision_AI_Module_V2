@@ -20,6 +20,7 @@ def main():
         app = GroveVisionAITool()
         app.protocol("WM_DELETE_WINDOW", app.on_closing)
         app.mainloop()
+        
     except Exception as e:
         print("=" * 50)
         print("[FATAL ERROR] Application crashed!")

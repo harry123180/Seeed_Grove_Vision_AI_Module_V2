@@ -17,7 +17,7 @@
 
 /* ============================================
  * Input Tensor Dimensions
- * (Both models use 256x256 input from PINTO)
+ * Both use 256x256 input, but Palm Det has 896 anchors
  * ============================================ */
 #define PALM_DET_INPUT_WIDTH        256
 #define PALM_DET_INPUT_HEIGHT       256
@@ -28,8 +28,8 @@
 /* ============================================
  * Detection Parameters
  * ============================================ */
-#define PALM_DETECTION_THRESHOLD    0.5f
-#define PALM_NMS_THRESHOLD          0.3f
+#define PALM_DETECTION_THRESHOLD    0.5f   // Match PC threshold (0.85 was too high)
+#define PALM_NMS_THRESHOLD          0.4f
 #define HAND_LANDMARK_THRESHOLD     0.5f
 
 /* ============================================
@@ -48,8 +48,8 @@
 /* ============================================
  * Debug Options
  * ============================================ */
-// #define HAND_TRACKING_DEBUG
-// #define PALM_DETECTION_DEBUG
+#define HAND_TRACKING_DEBUG
+#define PALM_DETECTION_DEBUG
 // #define HAND_LANDMARK_DEBUG
 
 #endif /* SCENARIO_APP_HAND_TRACKING_COMMON_CONFIG_H_ */
